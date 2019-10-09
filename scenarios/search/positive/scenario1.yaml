@@ -1,0 +1,12 @@
+name: "search_positive"
+data: []
+setUp:
+  - runDriver: "chrome"
+scenario:
+  - pageObject:
+      class: "GoogleSearchPage"
+      method: "search_positive"
+      params:
+        searchText: "something"
+tearDown:
+  - closeDriver:

@@ -1,0 +1,12 @@
+name: "search_negative"
+data:
+setUp:
+  - runDriver: "dd"
+scenario:
+  - pageObject:
+      class: "GoogleSearchPage"
+      method: "search_negative"
+      params:
+        searchText: ""
+tearDown:
+  - closeDriver:
