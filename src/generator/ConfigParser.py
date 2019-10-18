@@ -20,4 +20,4 @@ class ConfigParser:
 
     @classmethod
     def _get_config(cls):
-        return load_yaml(cls.ROOT_DIR + "/config.yaml")
+        return load_yaml(cls.ROOT_DIR + "/./config.yaml")

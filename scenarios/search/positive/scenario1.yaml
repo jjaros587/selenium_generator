@@ -1,12 +1,12 @@
 name: "search_positive"
-data: []
+data: "data.json"
 setUp:
   - runDriver: "chrome"
-scenario:
+steps:
   - pageObject:
       class: "GoogleSearchPage"
       method: "search_positive"
       params:
-        searchText: "something"
+        search_text:
 tearDown:
   - closeDriver:

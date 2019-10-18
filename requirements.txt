@@ -2,3 +2,4 @@ yaml
 selenium
 webdriver_manager
 html-testRunner
+ddt

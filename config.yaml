@@ -1,0 +1,6 @@
+scenarios: "C:\\Users\\jjaro\\PycharmProjects\\selenium-generator\\scenarios\\"
+data: "C:\\Users\\jjaro\PycharmProjects\\selenium-generator\\data\\"
+report:
+  output: ""
+screenshots: ""
+

@@ -11,12 +11,12 @@ class GoogleSearchPage:
         self._driver = driver
         self._driver.get("https://www.google.com/")
 
-    def search_positive(self, searchText):
-        self._field_search().send_keys(searchText)
+    def search_positive(self, search_text):
+        self._field_search().send_keys(search_text)
         self._field_search().send_keys(Keys.RETURN)
         assert "search" in self._driver.current_url
 
-    def search_negative(self, searchText):
+    def search_negative(self, search_text):
         self._field_search().send_keys(searchText)
         self._field_search().send_keys(Keys.RETURN)
         assert "search" not in self._driver.current_url
