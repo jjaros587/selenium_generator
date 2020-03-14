@@ -1,12 +1,11 @@
 name: "search_negative"
-data:
-setUp:
-  - runDriver: "dd"
+set_up:
+  - run_driver: "dd"
 scenario:
-  - pageObject:
+  - page_object:
       class: "GoogleSearchPage"
       method: "search_negative"
       params:
         searchText: ""
-tearDown:
-  - closeDriver:
+tear_down:
+  - close_driver:

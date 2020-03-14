@@ -1,6 +1,7 @@
 import unittest
-from src.generator.DriverManger import DriverManager
 
 
 class DriverManagerTest(unittest.TestCase):
-    pass
+
+    def test_first(self):
+        assert 1 == 1

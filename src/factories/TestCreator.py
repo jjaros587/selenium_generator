@@ -1,4 +1,5 @@
-from src.generator.BaseTest import factory
+from src.base.BaseTest import factory
+from src.parsers.ConfigParser import ConfigParser
 import ddt
 
 
@@ -14,15 +15,14 @@ class TestCreator:
         return ddt.ddt(self.test_class)
 
     def _check_data(self):
-        if ('data' not in self.scenario) or (('data' in self.scenario) and (self.scenario['data'] is None)):
+        if 'data' not in self.scenario or self.scenario['data'] is None:
             self._create_test_method(self.test_method)
             return
 
         if self.scenario['data'] is not None:
+            data_path = ConfigParser().get_data_path(self.scenario['data'])
             self._create_test_method(
-                ddt.file_data
-                (self.scenario['data'])
-                (getattr(self.test_class, self.test_method.__name__))
+                ddt.file_data(data_path)(getattr(self.test_class, self.test_method.__name__))
             )
             return
 

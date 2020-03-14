@@ -1,4 +1,4 @@
-from src.generator.PageFactory import callable_find_by as find_by
+from src.factories.PageFactory import callable_find_by as find_by
 from selenium.webdriver.common.keys import Keys
 
 
@@ -17,6 +17,6 @@ class GoogleSearchPage:
         assert "search" in self._driver.current_url
 
     def search_negative(self, search_text):
-        self._field_search().send_keys(searchText)
+        self._field_search().send_keys(search_text)
         self._field_search().send_keys(Keys.RETURN)
         assert "search" not in self._driver.current_url

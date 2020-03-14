@@ -7,15 +7,15 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 class DriverManager:
 
-    allowed_browsers = ["chrome", "firefox"]
+    _allowed_browsers = ["chrome", "firefox"]
 
     @classmethod
     def run_driver(cls, param):
-        if param not in cls.allowed_browsers:
-            raise ValueError("Byl zadán neplatný driver! Platné hodnoty jsou %s" % cls.allowed_browsers)
+        if param not in cls._allowed_browsers:
+            raise ValueError("Byl zadán neplatný driver! Platné hodnoty jsou %s" % cls._allowed_browsers)
         driver = None
         if param == "chrome":
-            driver = DriverManager._run_chrome()
+            driver = DriverManager()._run_chrome()
         elif param == "firefox":
             driver = DriverManager._run_firefox()
         driver.maximize_window()

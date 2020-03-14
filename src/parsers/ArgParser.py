@@ -3,7 +3,8 @@ import argparse
 
 class ArgParser:
 
-    def parse_args(self):
+    @classmethod
+    def parse_args(cls):
         parse = argparse.ArgumentParser()
         parse.add_argument("-c", "--config", type=str, required=True, help="Set path to config file")
         args = parse.parse_args()
