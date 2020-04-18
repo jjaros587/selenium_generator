@@ -1,8 +1,7 @@
 name: "search_positive"
-tags: ["regression", "acceptance"]
 data: "data.json"
+tags: ["*"]
 set_up_class:
-
 set_up:
   - run_driver: "chrome"
 steps:

@@ -24,3 +24,8 @@ class ConfigParser:
 
     def get_data_path(self, path_from_root):
         return self.config['data'] + path_from_root
+
+    def get_tags(self):
+        if 'tags' not in self.config or self.config['tags'] is None:
+            return None
+        return self.config['tags']

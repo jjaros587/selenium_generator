@@ -5,9 +5,12 @@ report:
   combine_reports: true
   report_name: "TestReport"
 screenshots: ""
+tags: []
 driver:
   type: ["chrome", "firefox"]
   headless: false
   remote: false
-tags: ["regression"]
+  params:
+    version: "81"
+
 

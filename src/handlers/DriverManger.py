@@ -27,7 +27,10 @@ class DriverManager:
         # if os.environ.get('headless') == "True":
         #     chrome_options.add_argument("--headless")
         #     chrome_options.add_argument("--window-size=1920x1080")
-        return webdriver.Chrome(chrome_options=chrome_options, executable_path=ChromeDriverManager().install())
+        return webdriver.Chrome(
+            chrome_options=chrome_options,
+            executable_path=ChromeDriverManager(version="80.0.3987.106").install()
+        )
 
     @staticmethod
     def _run_firefox():
