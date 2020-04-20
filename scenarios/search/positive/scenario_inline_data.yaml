@@ -1,0 +1,15 @@
+name: "search_positive_inline_data"
+data:
+  - search_text: "text1"
+  - search_text: "text2"
+tags: ["*"]
+set_up_class:
+set_up:
+  - run_driver: "chrome"
+steps:
+  - page_object:
+      class: "GoogleSearchPage"
+      method: "search_positive"
+tear_down:
+  - close_driver:
+tear_down_class:

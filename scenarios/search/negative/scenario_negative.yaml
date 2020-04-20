@@ -1,5 +1,5 @@
 name: "search_negative"
-tags: ["regression", "acceptance", "*"]
+tags: ["*"]
 set_up:
   - run_driver: "chrome"
 scenario:

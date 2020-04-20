@@ -5,7 +5,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-class DriverManager:
+class DriverFactory:
 
     _allowed_browsers = ["chrome", "firefox"]
 
@@ -15,9 +15,9 @@ class DriverManager:
             raise ValueError("Byl zadán neplatný driver! Platné hodnoty jsou %s" % cls._allowed_browsers)
         driver = None
         if param == "chrome":
-            driver = DriverManager()._run_chrome()
+            driver = DriverFactory()._run_chrome()
         elif param == "firefox":
-            driver = DriverManager._run_firefox()
+            driver = DriverFactory._run_firefox()
         driver.maximize_window()
         return driver
 

@@ -1,5 +1,4 @@
-name: "search_positive"
-data: "data.json"
+name: "search_positive_inline_params"
 tags: ["*"]
 set_up_class:
 set_up:
@@ -9,7 +8,7 @@ steps:
       class: "GoogleSearchPage"
       method: "search_positive"
       params:
-        search_text:
+        search_text: "inline params"
 tear_down:
   - close_driver:
 tear_down_class:
