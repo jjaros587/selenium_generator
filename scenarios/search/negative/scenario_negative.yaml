@@ -1,6 +1,6 @@
 name: "search_negative"
 tags: ["*"]
-set_up:
+setup:
   - run_driver: "chrome"
 scenario:
   - page_object:
@@ -8,5 +8,5 @@ scenario:
       method: "search_negative"
       params:
         searchText: ""
-tear_down:
+teardown:
   - close_driver:

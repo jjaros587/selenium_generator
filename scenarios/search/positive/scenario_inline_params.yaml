@@ -1,7 +1,7 @@
 name: "search_positive_inline_params"
 tags: ["*"]
-set_up_class:
-set_up:
+setup_class:
+setup:
   - run_driver: "chrome"
 steps:
   - page_object:
@@ -9,6 +9,6 @@ steps:
       method: "search_positive"
       params:
         search_text: "inline params"
-tear_down:
+teardown:
   - close_driver:
-tear_down_class:
+teardown_class:

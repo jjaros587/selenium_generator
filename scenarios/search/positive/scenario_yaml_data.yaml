@@ -1,13 +1,13 @@
 name: "search_positive_yaml_data"
 data: "data.yaml"
 tags: ["*"]
-set_up_class:
-set_up:
+setup_class:
+setup:
   - run_driver: "chrome"
 steps:
   - page_object:
       class: "GoogleSearchPage"
       method: "search_positive"
-tear_down:
+teardown:
   - close_driver:
-tear_down_class:
+teardown_class:
