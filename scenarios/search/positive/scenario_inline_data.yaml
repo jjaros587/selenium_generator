@@ -8,7 +8,7 @@ setup:
   - run_driver: "chrome"
 steps:
   - page_object:
-      class: "GoogleSearchPage"
+      class: "GoogleSearchPageNegative"
       method: "search_positive"
 teardown:
   - close_driver:

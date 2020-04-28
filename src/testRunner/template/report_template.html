@@ -48,7 +48,10 @@
                             </td>
                             <td class="col-xs-1">
                                 {%- if (test_case.stdout or test_case.err) %}
-                                <button class="btn btn-default btn-xs">View</button>
+                                <button class="btn btn-default btn-xs view">View</button>
+                                {%- endif %}
+                                {%- if test_case.screen_shot is not none %}
+                                <a href='{{ test_case.screen_shot }}'><button class="btn btn-default btn-xs">Show screenshot</button></a>
                                 {%- endif %}
                             </td>
                         </tr>
@@ -142,7 +145,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('td').on('click', '.btn', function(e){
+            $('td').on('click', '.view', function(e){
                 e.preventDefault();
                 e.stopImmediatePropagation();
                 var $this = $(this);
@@ -159,4 +162,4 @@
         });
     </script>
 </body>
-</html
+</html>

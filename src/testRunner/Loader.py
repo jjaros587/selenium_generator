@@ -1,5 +1,6 @@
 from unittest import TestLoader, TestSuite
-from src.base.utils import get_list_of_files, load_yaml
+from src.base.FileManager import FileManager
+from src.base.utils import load_yaml
 from src.factories.TestCreator import TestCreator
 from src.parsers.ConfigParser import ConfigParser
 
@@ -8,7 +9,7 @@ class Loader:
 
     def __init__(self):
         self.tests = []
-        self.scenarios = get_list_of_files(ConfigParser().get_scenarios_path())
+        self.scenarios = FileManager.get_list_of_files(ConfigParser().get_scenarios_path())
         self.tags = ConfigParser().get_tags()
         self.test_creator = TestCreator()
 
@@ -24,10 +25,6 @@ class Loader:
 
     def _verify_tags(self, scenario):
         if self.tags is not None:
-            if 'tags' not in scenario:
-                return False
-            if scenario['tags'] is None:
-                return False
             if scenario['tags'].__len__() == 0:
                 return False
             if "*" not in scenario['tags'] and not any(i in self.tags for i in scenario['tags']):

@@ -1,11 +1,18 @@
-scenarios: "C:\\Users\\jjaro\\PycharmProjects\\selenium-generator\\scenarios\\"
-data: "C:\\Users\\jjaro\\PycharmProjects\\selenium-generator\\data\\"
-pages: "C:\\Users\\jjaro\\PycharmProjects\\selenium-generator\\pages\\"
+scenarios: "D:\\PyCharmProjects\\selenium-generator\\scenarios\\"
+data: "D:\\PycharmProjects\\selenium-generator\\data\\"
+pages: "D:\\PycharmProjects\\selenium-generator\\pages\\"
+
 report:
-  combine_reports: true
-  report_name: "TestReport"
-screenshots: ""
-tags: []
+  screenshots: true
+  clean: true
+  params:
+    output: "D:\\PycharmProjects\\selenium-generator\\report"
+    combine_reports: true
+    report_name: "TestReport"
+    report_title: "Sample Report"
+
+tags: ["aaa"]
+
 driver:
   type: ["chrome", "firefox"]
   headless: false
