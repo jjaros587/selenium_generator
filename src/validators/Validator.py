@@ -1,6 +1,5 @@
 import os
 from cerberus import Validator
-
 from src.base.Exceptions import InvalidConfiguration
 from src.base.utils import singleton, load_json
 
@@ -27,6 +26,9 @@ class SchemaValidator:
 
     def validate_scenario(self, document):
         return self.validate(document,  self.scenario_schema)
+
+    def get_errors(self):
+        return self.v.errors
 
     @staticmethod
     def _load_file(file):

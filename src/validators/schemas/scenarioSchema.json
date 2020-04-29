@@ -1,1 +1,45 @@
-{}
+{
+  "name": {
+    "type": "string",
+    "required": true
+  },
+  "data": {
+    "type": ["list", "string"],
+    "required": false
+  },
+  "tags": {
+    "type": "list",
+    "required": false,
+    "nullable": true,
+    "schema": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "setup_class": {
+    "type": "list",
+    "required": false,
+    "nullable": true
+  },
+  "setup": {
+    "type": "list",
+    "required": false,
+    "nullable": true
+  },
+  "teardown": {
+    "type": "list",
+    "required": false,
+    "nullable": true
+  },
+  "teardown_class": {
+    "type": "list",
+    "required": false,
+    "nullable": true
+  },
+
+  "steps": {
+    "type": "list",
+    "required": false,
+    "nullable": true
+  }
+}

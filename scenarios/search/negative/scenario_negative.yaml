@@ -2,7 +2,7 @@ name: "search_negative"
 tags: ["*"]
 setup:
   - run_driver: "chrome"
-scenario:
+steps:
   - page_object:
       class: "GoogleSearchPage"
       method: "search_negative"

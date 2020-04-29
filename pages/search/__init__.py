@@ -1,1 +1,1 @@
-from . import GoogleSearchPage
+from . import GoogleSearchPage, GoogleSearchPageInvalid
