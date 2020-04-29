@@ -1,0 +1,64 @@
+{
+  "scenarios": {
+    "type": "string",
+    "required": true
+  },
+  "data": {
+    "type": "string",
+    "required": true
+  },
+  "pages": {
+    "type": "string",
+    "required": true
+  },
+  "tags": {
+    "type": "list",
+    "required": false,
+    "nullable": true,
+    "schema": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "report": {
+    "type": "dict",
+    "required": false,
+    "schema": {
+      "screenshots": {
+        "type": "boolean",
+        "required": false
+      },
+      "clean": {
+        "type": "boolean",
+        "required": false
+      },
+      "params": {
+        "type": "dict",
+        "required": false,
+        "schema": {
+          "output": {
+            "type": "string",
+            "required": false
+          },
+          "combine_reports": {
+            "type": "boolean",
+            "required": false
+          },
+          "report_name": {
+            "type": "string",
+            "required": false
+          },
+          "report_title": {
+            "type": "string",
+            "required": false
+          }
+        }
+      }
+    }
+  },
+  "driver": {
+    "type": "dict",
+    "required": false,
+    "allow_unknown": true
+  }
+}

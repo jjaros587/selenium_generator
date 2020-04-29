@@ -1,5 +1,6 @@
 from src.base.utils import load_yaml, singleton
 from src.testRunner import Runner
+from src.validators.Validator import SchemaValidator
 
 
 @singleton
@@ -10,6 +11,7 @@ class ConfigParser:
     @classmethod
     def load_config(cls, config_path):
         cls.config = load_yaml(config_path)
+        SchemaValidator().validate_config(cls.config)
         ConfigUpdater(cls).update_config()
 
     def get_pages_path(self):

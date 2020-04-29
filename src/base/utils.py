@@ -1,3 +1,5 @@
+import json
+
 import yaml
 from functools import wraps
 
@@ -15,6 +17,11 @@ def singleton(cls):
     return get_instance
 
 
-def load_yaml(scenario):
-    with open(scenario) as f:
+def load_yaml(file):
+    with open(file) as f:
         return yaml.load(f, Loader=yaml.FullLoader)
+
+
+def load_json(file):
+    with open(file) as f:
+        return json.load(f)
