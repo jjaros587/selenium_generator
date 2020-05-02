@@ -16,22 +16,22 @@
       "required": false
     }
   },
-  "setup_class": {
+  "before_all": {
     "type": "list",
     "required": false,
     "nullable": true
   },
-  "setup": {
+  "before_each": {
     "type": "list",
     "required": false,
     "nullable": true
   },
-  "teardown": {
+  "after_each": {
     "type": "list",
     "required": false,
     "nullable": true
   },
-  "teardown_class": {
+  "after_all": {
     "type": "list",
     "required": false,
     "nullable": true

@@ -15,13 +15,13 @@ class BaseTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.handler = EventHandler()
-        if "setupclass" in cls.scenario:
-            cls.handler.execute(cls, cls.scenario['setup_class'])
+        if "before_all" in cls.scenario:
+            cls.handler.execute(cls, cls.scenario['before_all'])
 
     def setUp(self):
         self.screen_shot_path = None
-        if "setup" in self.scenario:
-            self.handler.execute(self, self.scenario['setup'])
+        if "before_each" in self.scenario:
+            self.handler.execute(self, self.scenario['before_each'])
 
     def base_method(self, **data):
         if "steps" in self.scenario:
@@ -30,13 +30,13 @@ class BaseTest(unittest.TestCase):
     def tearDown(self):
         if ConfigParser().get_report_config()['screenshots']:
             self._screen_shot_on_error()
-        if "teardown" in self.scenario:
-            self.handler.execute(self, self.scenario['teardown'])
+        if "after_each" in self.scenario:
+            self.handler.execute(self, self.scenario['after_each'])
 
     @classmethod
     def tearDownClass(cls):
-        if "teardown_class" in cls.scenario:
-            cls.handler.execute(cls, cls.scenario['teardown_class'])
+        if "after_all" in cls.scenario:
+            cls.handler.execute(cls, cls.scenario['after_all'])
 
     def _screen_shot_on_error(self):
         """Take a Screen-shot of the drive homepage, when it Failed."""

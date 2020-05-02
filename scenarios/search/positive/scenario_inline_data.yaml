@@ -3,13 +3,13 @@ data:
   - search_text: "text1"
   - search_text: "text2"
 tags: ["*"]
-setup_class:
-setup:
+before_all:
+before_each:
   - run_driver: "chrome"
 steps:
   - page_object:
       class: "GoogleSearchPageInvalid"
       method: "search_positive"
-teardown:
+after_each:
   - close_driver:
-teardown_class:
+after_all:

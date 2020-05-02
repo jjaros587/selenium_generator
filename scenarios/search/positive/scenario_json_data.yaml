@@ -1,13 +1,13 @@
 name: "search_positive_json_data"
 data: "data.json"
 tags: []
-setup_class:
-setup:
+before_all:
+before_each:
   - run_driver: "chrome"
 steps:
   - page_object:
       class: "GoogleSearchPage"
       method: "search_positive"
-teardown:
+after_each:
   - close_driver:
-teardown_class:
+after_all:

@@ -1,6 +1,6 @@
 name: "search_negative"
 tags: ["*"]
-setup:
+before_each:
   - run_driver: "chrome"
 steps:
   - page_object:
@@ -8,5 +8,5 @@ steps:
       method: "search_negative"
       params:
         searchText: ""
-teardown:
+after_each:
   - close_driver:
