@@ -1,5 +1,7 @@
 import os
 import sys
+
+from src.base.Exceptions import UnspecifiedDataFolder
 from src.base.utils import load_yaml, singleton
 from src.testRunner import Runner
 from src.validators.Validator import SchemaValidator
@@ -35,7 +37,9 @@ class ConfigParser:
         return self.config['drivers']
 
     def get_data_path(self, data_path):
-        return os.path.join(self._get_path(self.config['data']), data_path)
+        if 'data' not in self.config:
+            raise UnspecifiedDataFolder()
+        return os.path.join(self.get_path(self.config['data']), data_path)
 
     def get_tags(self):
         return self.config['tags']
