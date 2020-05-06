@@ -1,0 +1,29 @@
+scenarios: "scenarios"
+data: "data"
+pages: "pages"
+
+drivers:
+  chrome:
+    remote: true
+    url: 'https://[some_url]/wd/hub'
+    desired_cap:
+      os : 'Windows'
+      os_version : '10'
+      browser : 'Chrome'
+      browser_version : '80'
+      name : "First Test"
+    options:
+      - "--window-size=1920x1080"
+
+  firefox:  # This driver will use default URL http://127.0.0.1:4444/wd/hub
+    remote: true
+    desired_caps:
+      os: 'Windows',
+      os_version: '10',
+      browser: 'Firefox',
+      browser_version: '74',
+      name: "First Test"
+    options:
+      - "--width=1920"
+      - "--height=1080"
+

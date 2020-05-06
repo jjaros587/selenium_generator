@@ -1,0 +1,17 @@
+scenarios: "scenarios"
+data: "data"
+pages: "pages"
+
+drivers:  # It is also possible to specify Desired Capabilities for each driver if needed
+  chrome:
+    remote: true
+    version: "80.0.3987.106"
+    options:
+      - "--headless"
+
+  firefox:  # This driver will use latest version
+    remote: true
+    options:
+      - "--width=1920"
+      - "--height=1080"
+
