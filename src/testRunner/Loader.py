@@ -24,9 +24,8 @@ class Loader:
         return TestSuite(self.tests)
 
     def _verify_tags(self, scenario):
-        if self.tags is not None:
-            if scenario['tags'].__len__() == 0:
-                return False
-            if "*" not in scenario['tags'] and not any(i in self.tags for i in scenario['tags']):
-                return False
+        if scenario['tags'].__len__() == 0:
+            return False
+        if "*" not in scenario['tags'] and not any(i in self.tags for i in scenario['tags']):
+            return False
         return True

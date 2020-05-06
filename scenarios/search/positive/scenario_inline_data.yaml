@@ -6,6 +6,7 @@ tags: ["*"]
 before_all:
 before_each:
   - run_driver: "chrome"
+  - maximize:
 steps:
   - page_object:
       class: "GoogleSearchPageInvalid"

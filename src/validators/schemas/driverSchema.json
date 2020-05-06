@@ -1,0 +1,30 @@
+{
+  "remote": {
+    "type": "boolean",
+    "required": true
+  },
+  "url": {
+    "type": "string",
+    "required": false,
+    "empty": false
+  },
+  "version": {
+    "type": "string",
+    "required": false,
+    "empty": false
+  },
+  "desired_caps": {
+    "type": "dict",
+    "required": false,
+    "allow_unknown": true
+  },
+  "options": {
+    "type": "list",
+    "required": false,
+    "schema": {
+      "type": "string",
+      "required": false,
+      "empty": false
+    }
+  }
+}

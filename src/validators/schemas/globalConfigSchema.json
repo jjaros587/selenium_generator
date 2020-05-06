@@ -1,23 +1,23 @@
 {
   "scenarios": {
     "type": "string",
-    "required": true
+    "empty": false
   },
   "data": {
     "type": "string",
-    "required": true
+    "empty": false
   },
   "pages": {
     "type": "string",
-    "required": true
+    "empty": false
   },
   "tags": {
     "type": "list",
     "required": false,
-    "nullable": true,
     "schema": {
       "type": "string",
-      "required": false
+      "required": false,
+      "empty": false
     }
   },
   "report": {
@@ -38,7 +38,8 @@
         "schema": {
           "output": {
             "type": "string",
-            "required": false
+            "required": false,
+            "empty": false
           },
           "combine_reports": {
             "type": "boolean",
@@ -46,19 +47,20 @@
           },
           "report_name": {
             "type": "string",
-            "required": false
+            "required": false,
+            "empty": false
           },
           "report_title": {
             "type": "string",
-            "required": false
+            "required": false,
+            "empty": false
           }
         }
       }
     }
   },
-  "driver": {
+  "drivers": {
     "type": "dict",
-    "required": false,
     "allow_unknown": true
   }
 }

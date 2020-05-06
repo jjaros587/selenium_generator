@@ -1,6 +1,5 @@
 import unittest
 from datetime import datetime
-
 from src.handlers.EventHandler import EventHandler
 from src.parsers.ConfigParser import ConfigParser
 

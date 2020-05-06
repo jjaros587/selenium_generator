@@ -1,3 +1,5 @@
+import os
+import sys
 from src.base.utils import load_yaml, singleton
 from src.testRunner import Runner
 from src.validators.Validator import SchemaValidator
@@ -15,10 +17,10 @@ class ConfigParser:
         ConfigUpdater(cls).update_config()
 
     def get_pages_path(self):
-        return self.config['pages']
+        return self.get_path(self.config['pages'])
 
     def get_scenarios_path(self):
-        return self.config['scenarios']
+        return self.get_path(self.config['scenarios'])
 
     def get_report_config(self):
         return self.config['report']
@@ -29,14 +31,18 @@ class ConfigParser:
         else:
             return {}
 
-    def get_driver_config(self):
-        return self.config['driver']
+    def get_drivers_config(self):
+        return self.config['drivers']
 
     def get_data_path(self, data_path):
-        return self.config['data'] + data_path
+        return os.path.join(self._get_path(self.config['data']), data_path)
 
     def get_tags(self):
         return self.config['tags']
+
+    @staticmethod
+    def get_path(folder):
+        return os.path.join(os.path.dirname(sys.modules['__main__'].__file__), folder)
 
 
 @singleton
@@ -51,7 +57,7 @@ class ConfigUpdater:
         self._verify_report()
 
     def _verify_tags(self):
-        if 'tags' not in self.config or self.config['tags'] is None:
+        if 'tags' not in self.config:
             self.config.update({'tags': []})
 
     def _verify_report(self):
@@ -68,7 +74,9 @@ class ConfigUpdater:
         report = self.parser().get_report_config()
         if 'params' in report:
             if 'output' in report['params']:
-                report.update({'output':  report['params']['output']})
+                updated_path = self.parser.get_path(report['params']['output'])
+                report['params']['output'] = updated_path
+                report.update({'output':  updated_path})
                 return
         report.update({'output': Runner.DEFAULT_OUTPUT})
 

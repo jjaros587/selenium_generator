@@ -1,4 +1,4 @@
-from src.factories.DriverFactory import DriverFactory
+from src.factories.drivers.DriverFactory import DriverFactory
 from src.parsers.ConfigParser import ConfigParser
 import importlib
 import inspect
@@ -16,7 +16,10 @@ class Keywords:
         self.data = data
 
     def _run_driver(self, command):
-        self.test.driver = DriverFactory.run_driver(command)
+        self.test.driver = DriverFactory().run(command)
+
+    def _maximize(self, *args, **kwargs):
+        self.test.driver.maximize_window()
 
     def _close_driver(self, *args, **kwargs):
         self.test.driver.close()

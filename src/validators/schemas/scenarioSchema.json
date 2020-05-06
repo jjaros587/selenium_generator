@@ -1,19 +1,21 @@
 {
   "name": {
     "type": "string",
-    "required": true
+    "required": true,
+    "empty": false
   },
   "data": {
     "type": ["list", "string"],
-    "required": false
+    "required": false,
+    "empty": false
   },
   "tags": {
     "type": "list",
     "required": false,
-    "nullable": true,
     "schema": {
       "type": "string",
-      "required": false
+      "required": false,
+      "empty": false
     }
   },
   "before_all": {

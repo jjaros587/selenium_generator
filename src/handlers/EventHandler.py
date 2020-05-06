@@ -7,7 +7,7 @@ class EventHandler:
         self.keywords = Keywords()
 
     def __call__(self, test_instance, commands, data):
-        self.commands = commands if commands is not None else []
+        self.commands = [] if commands is None else commands
         self.keywords(test_instance, data)
 
     def execute(self, instance, steps, data=None):
