@@ -40,9 +40,8 @@ class Result(HtmlTestResult):
 
 
 class Runner(HTMLTestRunner):
-    def __init__(self, output=DEFAULT_OUTPUT, report_title=None, report_name=None, template=DEFAULT_TEMPLATE,
-                 resultclass=Result, add_timestamp=True, combine_reports=False, template_args=None):
+    def __init__(self, output=DEFAULT_OUTPUT, report_title="Test results", report_name="TestReport", template=DEFAULT_TEMPLATE,
+                 resultclass=Result, combine_reports=False):
 
         HTMLTestRunner.__init__(self, output=output, report_title=report_title, report_name=report_name,
-                                template=template, resultclass=resultclass, add_timestamp=add_timestamp,
-                                combine_reports=combine_reports, template_args=template_args)
+                                template=template, resultclass=resultclass, combine_reports=combine_reports)
