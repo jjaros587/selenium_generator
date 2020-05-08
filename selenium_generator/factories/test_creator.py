@@ -1,10 +1,10 @@
 import unittest
 
-from src.base.base_test import factory
-from src.base.utils import singleton
-from src.parsers.config_parser import ConfigParser
+from selenium_generator.base.base_test import factory
+from selenium_generator.base.utils import singleton
+from selenium_generator.parsers.config_parser import ConfigParser
 import ddt
-from src.validators.validator import SchemaValidator
+from selenium_generator.validators.validator import SchemaValidator
 
 
 @singleton

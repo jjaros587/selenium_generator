@@ -1,8 +1,8 @@
-from src.base.file_manager import FileManager
-from src.test_runner import loader
-from src.test_runner.runner import Runner
-from src.parsers.config_parser import ConfigParser
-from src.parsers.arg_parser import ArgParser
+from selenium_generator.base.file_manager import FileManager
+from selenium_generator.test_runner import loader
+from selenium_generator.test_runner.runner import Runner
+from selenium_generator.parsers.config_parser import ConfigParser
+from selenium_generator.parsers.arg_parser import ArgParser
 
 
 def main():

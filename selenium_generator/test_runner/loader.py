@@ -1,8 +1,8 @@
 from unittest import TestLoader, TestSuite
-from src.base.file_manager import FileManager
-from src.base.utils import load_yaml
-from src.factories.test_creator import TestCreator
-from src.parsers.config_parser import ConfigParser
+from selenium_generator.base.file_manager import FileManager
+from selenium_generator.base.utils import load_yaml
+from selenium_generator.factories.test_creator import TestCreator
+from selenium_generator.parsers.config_parser import ConfigParser
 
 
 class Loader:

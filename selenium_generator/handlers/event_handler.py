@@ -1,4 +1,4 @@
-from src.handlers.keywords import Keywords
+from selenium_generator.handlers.keywords import Keywords
 
 
 class EventHandler:

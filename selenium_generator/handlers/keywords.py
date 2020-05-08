@@ -1,5 +1,5 @@
-from src.factories.drivers.driver_factory import DriverFactory
-from src.parsers.config_parser import ConfigParser
+from selenium_generator.factories.drivers.driver_factory import DriverFactory
+from selenium_generator.parsers.config_parser import ConfigParser
 import importlib
 import inspect
 import sys

@@ -1,10 +1,9 @@
 import os
 import sys
-
-from src.base.exceptions import UnspecifiedDataFolder
-from src.base.utils import load_yaml, singleton
-from src.test_runner import runner
-from src.validators.validator import SchemaValidator
+from selenium_generator.base.exceptions import UnspecifiedDataFolder
+from selenium_generator.base.utils import load_yaml, singleton
+from selenium_generator.test_runner import runner
+from selenium_generator.validators.validator import SchemaValidator
 
 
 @singleton

@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime
-from src.handlers.event_handler import EventHandler
-from src.parsers.config_parser import ConfigParser
+from selenium_generator.handlers.event_handler import EventHandler
+from selenium_generator.parsers.config_parser import ConfigParser
 
 
 class BaseTest(unittest.TestCase):
