@@ -4,7 +4,7 @@ from src.factories.drivers.LocalDriver import LocalDriver
 from src.factories.drivers.RemoteDriver import RemoteDriver
 from src.parsers.ConfigParser import ConfigParser
 
-DEFAULT_BROWSERS = ["chrome", "firefox", "ie"]
+DEFAULT_BROWSERS = ["chrome", "firefox"]
 
 
 @singleton
