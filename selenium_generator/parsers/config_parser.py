@@ -27,10 +27,7 @@ class ConfigParser:
         return self.config['report']
 
     def get_report_params(self):
-        if 'params' in self.config['report']:
-            return self.config['report']['params']
-        else:
-            return {}
+        return self.config['report']['params'] if 'params' in self.config['report'] else {}
 
     def get_drivers_config(self):
         return self.config['drivers']
