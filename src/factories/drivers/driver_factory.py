@@ -1,8 +1,8 @@
-from src.base.Exceptions import MissingConfiguration, UnallowedBrowser
+from src.base.exceptions import MissingConfiguration, UnallowedBrowser
 from src.base.utils import singleton
-from src.factories.drivers.LocalDriver import LocalDriver
-from src.factories.drivers.RemoteDriver import RemoteDriver
-from src.parsers.ConfigParser import ConfigParser
+from src.factories.drivers.local_driver import LocalDriver
+from src.factories.drivers.remote_driver import RemoteDriver
+from src.parsers.config_parser import ConfigParser
 
 DEFAULT_BROWSERS = ["chrome", "firefox"]
 

@@ -1,10 +1,10 @@
 import unittest
 
-from src.base.BaseTest import factory
+from src.base.base_test import factory
 from src.base.utils import singleton
-from src.parsers.ConfigParser import ConfigParser
+from src.parsers.config_parser import ConfigParser
 import ddt
-from src.validators.Validator import SchemaValidator
+from src.validators.validator import SchemaValidator
 
 
 @singleton

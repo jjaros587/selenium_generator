@@ -1,4 +1,4 @@
-from src.handlers.Keywords import Keywords
+from src.handlers.keywords import Keywords
 
 
 class EventHandler:

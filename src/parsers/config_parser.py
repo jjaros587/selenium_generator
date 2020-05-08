@@ -1,10 +1,10 @@
 import os
 import sys
 
-from src.base.Exceptions import UnspecifiedDataFolder
+from src.base.exceptions import UnspecifiedDataFolder
 from src.base.utils import load_yaml, singleton
-from src.testRunner import Runner
-from src.validators.Validator import SchemaValidator
+from src.test_runner import runner
+from src.validators.validator import SchemaValidator
 
 
 @singleton
@@ -82,5 +82,5 @@ class ConfigUpdater:
                 report['params']['output'] = updated_path
                 report.update({'output':  updated_path})
                 return
-        report.update({'output': Runner.DEFAULT_OUTPUT})
+        report.update({'output': runner.DEFAULT_OUTPUT})
 

@@ -1,8 +1,8 @@
 from unittest import TestLoader, TestSuite
-from src.base.FileManager import FileManager
+from src.base.file_manager import FileManager
 from src.base.utils import load_yaml
-from src.factories.TestCreator import TestCreator
-from src.parsers.ConfigParser import ConfigParser
+from src.factories.test_creator import TestCreator
+from src.parsers.config_parser import ConfigParser
 
 
 class Loader:

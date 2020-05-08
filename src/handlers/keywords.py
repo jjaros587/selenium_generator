@@ -1,5 +1,5 @@
-from src.factories.drivers.DriverFactory import DriverFactory
-from src.parsers.ConfigParser import ConfigParser
+from src.factories.drivers.driver_factory import DriverFactory
+from src.parsers.config_parser import ConfigParser
 import importlib
 import inspect
 import sys

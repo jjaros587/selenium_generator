@@ -1,11 +1,11 @@
 import os
 from cerberus import Validator
-from src.base.Exceptions import InvalidConfiguration
+from src.base.exceptions import InvalidConfiguration
 from src.base.utils import singleton, load_json
 
-DEFAULT_CONFIG_SCHEMA = os.path.join(os.path.dirname(__file__), "schemas", "globalConfigSchema.json")
-DEFAULT_DRIVER_SCHEMA = os.path.join(os.path.dirname(__file__), "schemas", "driverSchema.json")
-DEFAULT_SCENARIO_SCHEMA = os.path.join(os.path.dirname(__file__), "schemas", "scenarioSchema.json")
+DEFAULT_CONFIG_SCHEMA = os.path.join(os.path.dirname(__file__), "schemas", "config_schema.json")
+DEFAULT_DRIVER_SCHEMA = os.path.join(os.path.dirname(__file__), "schemas", "driver_schema.json")
+DEFAULT_SCENARIO_SCHEMA = os.path.join(os.path.dirname(__file__), "schemas", "scenario_schema.json")
 
 
 class ExtendedValidator(Validator):

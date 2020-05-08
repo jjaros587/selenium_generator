@@ -1,4 +1,4 @@
-from src.factories.PageFactory import callable_find_by as find_by
+from src.factories.page_factory import callable_find_by as find_by
 from selenium.webdriver.common.keys import Keys
 
 

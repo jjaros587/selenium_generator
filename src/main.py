@@ -1,7 +1,8 @@
-from src.base.FileManager import FileManager
-from src.testRunner import Loader, Runner
-from src.parsers.ConfigParser import ConfigParser
-from src.parsers.ArgParser import ArgParser
+from src.base.file_manager import FileManager
+from src.test_runner import loader
+from src.test_runner.runner import Runner
+from src.parsers.config_parser import ConfigParser
+from src.parsers.arg_parser import ArgParser
 
 
 def main():
@@ -18,8 +19,8 @@ def main():
     else:
         FileManager.mkdir(report_config['output'])
 
-    runner = Runner.Runner(**ConfigParser().get_report_params())
-    runner.run(Loader.Loader().load_scenarios())
+    runner = Runner(**ConfigParser().get_report_params())
+    runner.run(loader.Loader().load_scenarios())
 
 
 if __name__ == "__main__":
