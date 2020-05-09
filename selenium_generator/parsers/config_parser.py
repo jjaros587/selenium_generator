@@ -1,21 +1,48 @@
 import os
 import sys
 from selenium_generator.base.exceptions import UnspecifiedDataFolder
+from selenium_generator.base.file_manager import FileManager
 from selenium_generator.base.utils import load_yaml, singleton
+from selenium_generator.parsers.arg_parser import ArgParser
 from selenium_generator.test_runner import runner
 from selenium_generator.validators.validator import SchemaValidator
 
+DEFAULT_CONFIG = {
+    'scenarios': "scenarios",
+    'data': "data",
+    'pages': "pages",
 
+    'report': {
+        'screenshots': True,
+        'clean': True,
+    },
+
+    'tags': [],
+
+    'drivers': {
+      'chrome': {
+        'remote': False,
+        'version': "80.0.3987.106"
+      },
+      'firefox': {
+        'remote': False
+      }
+    }
+}
 @singleton
 class ConfigParser:
 
-    config = None
+    def __init__(self, config_path='config.yaml'):
+        arg_config = ArgParser.parse_args()
+        if arg_config is not None:
+            self.config = load_yaml(arg_config)
+        elif FileManager.file_exists(config_path):
+            self.config = load_yaml(config_path)
+        else:
+            self.config = DEFAULT_CONFIG
 
-    @classmethod
-    def load_config(cls, config_path):
-        cls.config = load_yaml(config_path)
-        SchemaValidator().validate_config(cls.config)
-        ConfigUpdater(cls).update_config()
+        SchemaValidator().validate_config(self.config)
+        ConfigUpdater(self).update_config()
 
     def get_pages_path(self):
         return self.get_path(self.config['pages'])
@@ -58,20 +85,15 @@ class ConfigUpdater:
 
     def _verify_tags(self):
         if 'tags' not in self.config:
-            self.config.update({'tags': []})
+            self.config.update({'tags': DEFAULT_CONFIG['tags']})
 
     def _verify_report(self):
         if 'report' not in self.config:
-            self.config.update({'report': None})
-        report = self.parser().get_report_config()
-        if 'screenshots' not in report:
-            report.update({'screenshots': False})
-        if 'clean' not in report:
-            report.update({'clean': True})
+            self.config.update({'report': DEFAULT_CONFIG['report']})
         self._verify_output_folder()
 
     def _verify_output_folder(self):
-        report = self.parser().get_report_config()
+        report = self.parser.get_report_config()
         if 'params' in report:
             if 'output' in report['params']:
                 updated_path = self.parser.get_path(report['params']['output'])

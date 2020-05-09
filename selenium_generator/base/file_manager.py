@@ -15,6 +15,10 @@ class FileManager:
         Path(path).mkdir(parents=parents, exist_ok=exists_ok)
 
     @staticmethod
+    def file_exists(path):
+        return Path(path).is_file()
+
+    @staticmethod
     def get_list_of_files(dir_name):
         all_files = list()
         for f in os.listdir(dir_name):
