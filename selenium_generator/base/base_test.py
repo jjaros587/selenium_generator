@@ -1,5 +1,8 @@
+import os
 import unittest
 from datetime import datetime
+
+from selenium_generator.base.file_manager import FileManager
 from selenium_generator.handlers.event_handler import EventHandler
 from selenium_generator.parsers.config_parser import ConfigParser
 
@@ -43,6 +46,7 @@ class BaseTest(unittest.TestCase):
             if error:
                 filename = datetime.now().strftime("%Y%m%d_%H%M%S") + "_" + self.id() + ".png"
                 path = ConfigParser().get_report_config()['output'] + "\\screenshots\\" + filename
+                FileManager.mkdir(os.path.dirname(path))
                 self.driver.get_screenshot_as_file(path)
                 self.screen_shot_path = "screenshots\\" + filename
 
