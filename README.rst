@@ -1,2 +1,2 @@
 
-..  include:: basic.rst
+..  include:: docs/source/basic.rst
