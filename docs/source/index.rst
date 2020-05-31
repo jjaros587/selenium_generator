@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to selenium_generator!
-==============================================
+==============================
 
 ..  include:: basic.rst
 
@@ -25,8 +25,6 @@ Table of contents
 Indices and tables
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 
 
