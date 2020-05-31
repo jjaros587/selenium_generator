@@ -11,9 +11,7 @@ Welcome to selenium_generator!
 from test scenarios written in yaml format, based on Selenium WebDriver framework.
 
 Framework provides easy way for writing scenarios in human readable format which is easier to maintain in comparison
-with clear code.
-
-It also support many of the most used best practices and patterns.
+with clear code. It also support many of the most used best practices and patterns.
 
 Framework is designed to be easily extensible.
 
@@ -42,14 +40,6 @@ Table of contents
    Starting the app <starting>
    scenario
    license
-
-******************
-Indices and tables
-******************
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
 ****************
 Copyright Notice
