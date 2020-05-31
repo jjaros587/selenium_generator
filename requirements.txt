@@ -5,3 +5,5 @@ webdriver_manager
 html-testRunner
 ddt
 cerberus
+sphinx
+sphinxcontrib-contentui
