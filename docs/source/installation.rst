@@ -16,7 +16,7 @@ Installation with PIP
 *******************
 Manual installation
 *******************
-Package is also possible to download by cloning the project repository and to install it manually.
+Package is also possible to download by cloning the project repository and to install it from source.
 
 .. code-block:: console
 

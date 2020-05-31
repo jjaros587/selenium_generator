@@ -2,7 +2,7 @@
 Configuration
 #############
 
-Global configuration holds everything what is needed for running the tests. Bellow are given its objects.
+Configuration holds everything what is needed for running the tests. Bellow are given its first level objects.
 
 .. code-block:: yaml
 
@@ -12,6 +12,8 @@ Global configuration holds everything what is needed for running the tests. Bell
     report:
     tags: []
     drivers:
+
+None of the objects is mandatory.
 
 ****************
 Setting of paths

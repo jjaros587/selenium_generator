@@ -13,9 +13,9 @@ Framework is designed to be easily extensible.
 `Link to oficial documentation
 <https://selenium-generator.readthedocs.io/en/latest/index.html>`_.
 
-****************
+********
 Features
-****************
+********
 
 - Automated generation of Tests based on Scenarios in yaml format
 - Data Driven Testing (DDT)
@@ -25,3 +25,11 @@ Features
 - Test report generating
 - Taking screenshots on failure
 - Including screenshots in test report
+
+****************
+Copyright Notice
+****************
+
+Cerberus is an open source project by Jakub Jaros. See the original `LICENSE
+<https://github.com/jjaros587/selenium_generator/blob/master/LICENSE>`_ for more
+information.
