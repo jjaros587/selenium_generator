@@ -1,7 +1,9 @@
-yaml
+pyyaml
 json
 selenium
 webdriver_manager
 html-testRunner
 ddt
 cerberus
+sphinx
+sphinxcontrib-contentui
