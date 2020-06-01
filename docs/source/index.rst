@@ -37,8 +37,11 @@ Table of contents
 
    installation
    configuration
-   Starting the app <starting>
+   starting
    scenario
+   keywords
+   exceptions
+   api
    license
 
 ****************

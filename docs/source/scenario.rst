@@ -2,40 +2,47 @@
 Test scenario structure
 #######################
 
-Test scenario follows the structure of test written by using unittest framework.
+Test scenario follows the structure of test written by using `unittest <https://docs.python.org/3/library/unittest.html>`_ framework.
+Bellow are given its first level objects.
 
 .. code-block:: yaml
 
     name: ""
-    data: ""
     tags: []
+    data: ""
     before_all:
     before_each:
     steps:
     after_each:
     after_all:
 
-*************
-Tagging tests
-*************
+*********
+Test name
+*********
+``name`` object defines name of a test, which is used for generating of a test class and it's also used in a test report.
 
-********
-Keywords
-********
+********************
+Adding test to suite
+********************
+Test can be added to a test suite by adding tags to a list in ``tags`` object.
+The object is not mandatory and can contain only non-empty ``string`` values.
 
-- ``run_driver:``
+.. code-block:: yaml
 
-- ``maximize:``
-
-- ``close_driver:``
-
-- ``page_object:``
+    tags: ["regression", "acceptance"]
 
 
-***********************
-Test data specification
-***********************
-There are several ways for test data specification. These can be divided in two groups which are as following:
+.. note::
+    There is an option to run a test all the times, no matter what tags are specified in configuration, by adding ``*`` symbol to the array.
+
+    .. code-block:: yaml
+
+        tags: ["*"]
+
+*********
+Test data
+*********
+There are several ways for test data specification. These can be divided into two groups which are as following:
 
 #. Direct specification of method's parameters
 #. Using of data for DDT
@@ -64,6 +71,7 @@ See the example:
           params:
             search_text: "searched value"
 
+
 DDT
 ===
 There are again to possible ways for data specification using DDT approach.
@@ -83,6 +91,7 @@ But the format has to follow yaml format. The example below would generate two t
       - search_text: "text1"
       - search_text: "text2"
 
+
 Data from file
 --------------
 For using data from file only file path specification, including file format, is needed.
@@ -92,3 +101,4 @@ It's possible to use data in ``json`` or ``yaml`` format.
 .. code-block:: yaml
 
     data: "data.json"
+
