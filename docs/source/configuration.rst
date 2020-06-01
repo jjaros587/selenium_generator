@@ -13,6 +13,7 @@ Configuration holds everything what is needed for test execution. Bellow are giv
     tags: []
     drivers:
 
+
 None of the objects is mandatory. If any of the objects is not specified a value from the default configuration would be used.
 In other words, an object has to be specified if there is a need for overriding the default value.
 
@@ -21,6 +22,7 @@ In other words, an object has to be specified if there is a need for overriding 
 
         .. literalinclude:: _static/default_config.yaml
             :language: yaml
+
 
 .. note:: The default configuration use only local drivers of the latest versions.
 
@@ -37,16 +39,14 @@ Setting of paths
 There are three objects for a specification of paths to directories.
 All of them accept string values of relative paths to directories with ``__main__`` as a starting point.
 
-``scenarios`` defines path to a folder with test scenarios.
-Scenarios inside the folder can be divided into more complex directory structure of multiple levels.
-Framework loads scenarios from all folders recursively.
+- ``scenarios (string)``
+    - defines path to a folder with test scenarios. Scenarios inside the folder can be divided into more complex directory structure of multiple levels. Framework loads scenarios from all folders recursively.
 
-``pages`` defines path to a folder with created Page Objects.
-Scenarios inside the folder can be divided into more complex directory structure of multiple levels in a case of a proper
-configuration of imports in ``__init__`` files. In the other words, it must be possible to load all classes from root folder.
+- ``pages (string)``
+    - defines path to a folder with created Page Objects. Scenarios inside the folder can be divided into more complex directory structure of multiple levels in a case of a proper configuration of imports in ``__init__`` files. In the other words, it must be possible to load all classes from root folder.
 
-``data`` defines path to external test data which are loaded from test scenario during the execution.
-This directory is used only if external files are used for ``DDT``.
+- ``data (string)``
+    - defines path to external test data which are loaded from test scenario during the execution. This directory is used only if external files are used for ``DDT``.
 
 *************************
 Test report configuration
@@ -56,20 +56,20 @@ All if its child objects are not mandatory, only these you want to override has 
 
 Object consists of several objects which are listed below:
 
-- ``screenshots``
+- ``screenshots (boolean)``
     - defines if you want to take screenshots on failure and to attach them in the test report
 
-- ``clean``
+- ``clean (boolean)``
     - defines if you want to clear the folder where the report and screenshots are being saved before a next text execution
 
-- ``params``
+- ``params (dict)``
     - is used for a specification of parameters of the report itself
     - **child objects**:
-        - ``output`` defines a directory for generating of the report and saving of the screenshots
-        - ``combine_reports`` defines whether test classes should be combined into one report or divided into several reports
-        - ``report_name`` defines a custom report name (name of the generated file)
-        - ``report_title`` defines a custom report title (heading of the generated report)
-        - ``template`` defines a path to a custom template instead of the default one.
+        - ``output (string)`` defines a directory for generating of the report and saving of the screenshots
+        - ``combine_reports (boolean)`` defines whether test classes should be combined into one report or divided into several reports
+        - ``report_name (string)`` defines a custom report name (name of the generated file)
+        - ``report_title (string)`` defines a custom report title (heading of the generated report)
+        - ``template (string)`` defines a path to a custom template instead of the default one.
             - The default template can be seen `here <https://github.com/jjaros587/selenium_generator/blob/dev/selenium_generator/test_runner/template/report_template.html>`_.
             - **TODO - add link to sample report.**
 
@@ -85,6 +85,7 @@ Tags can be specified as a list of ``String`` values in object ``tags:``, both i
 .. code-block:: yaml
 
     tags: ["regression", "acceptance"]
+
 
 The object `tags:` is not mandatory. The effect would be the same as with an empty array ``[]``. The array cannot contain empty ``String``.
 This behaviour is applied to both scenario and configuration.
@@ -113,8 +114,8 @@ objects which holds its configuration.
             options: []
             desired_caps:
 
+
 The framework allows you to use either local or remote drivers.
-The use of some objects depends on a selected driver type.
 
 - ``remote (boolean)``
     - defines if we want to download and use local driver or to use remote driver
@@ -125,30 +126,36 @@ The use of some objects depends on a selected driver type.
     - defines objects with Desired Capabilities
 
 There are two more objects which can be specified, ``version`` and ``url``.
-These depends on a type of a driver adn they are explained bellow.
+These depends on a type of a driver and they are explained bellow.
 Its specification with a wrong type of a driver doesn't throw any error. They are simply ignored.
 
+Invalid driver configuration can throw several of exceptions. `*See the detailed information* <exceptions.html>`_
 
 Local WebDriver
 ===============
-- ``version (string)`` defines a version of a local driver. If an object isn't specified, the latest version is downloaded.
+- ``version (string)`` defines a version of a local driver. If the object isn't specified, the latest version is downloaded.
+
+At this time, the framework provides local drivers only for browsers ``chrome`` adn ``firefox``.
 
 .. code-block:: yaml
 
     drivers:
         chrome:
-            remote: true
+            remote: false
             version: "80.0.3987.106"
 
         firefox:
-            remote: true
+            remote: false
             options:
                 - "--width=150"
                 - "--height=100"
 
+
 Remote WebDriver
 ================
-- ``url (string)`` defines an URL to a remote driver. If an object isn't specified, the default value ``http://127.0.0.1:4444/wd/hub``  is used.
+- ``url (string)`` defines an URL to a remote driver. If the object isn't specified, the default value ``http://127.0.0.1:4444/wd/hub``  is used.
+
+The usage of remote drivers for different browsers are limited only with your own configuration of a ``hub`` and ``nodes`` or with an external service which you are using.
 
 .. code-block:: yaml
 
@@ -166,6 +173,7 @@ Remote WebDriver
 
         firefox:
             remote: true
+            url: "http://example.com:4444/wd/hub"
             options:
                 - "--width=150"
                 - "--height=100"

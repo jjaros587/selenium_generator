@@ -12,6 +12,7 @@ The framework needs several external dependencies which are installed along with
         .. include:: ../../requirements.txt
             :literal:
 
+
 *********************
 Installation with PIP
 *********************
@@ -32,6 +33,7 @@ Package is also possible to download by cloning the project repository and to in
     $ git clone https://github.com/jjaros587/selenium_generator.git
     $ cd selenium_generator
     $ python setup.py install
+
 
 If the framework is being extended you might find useful to install the package in a development mode.
 

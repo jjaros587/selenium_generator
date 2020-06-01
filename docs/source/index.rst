@@ -40,6 +40,7 @@ Table of contents
    starting
    scenario
    keywords
+   page_factory
    exceptions
    api
    license

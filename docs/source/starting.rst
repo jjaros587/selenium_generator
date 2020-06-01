@@ -11,6 +11,7 @@ Tests can be easily run with main module of the framework.
     if __name__ == "__main__":
         main.main()
 
+
 The framework needs loaded configuration for test execution.
 The main module loads configuration and run tests with test runner according to loaded configuration.
 If no configuration is specified, framework will use the default configuration.
@@ -21,8 +22,8 @@ If no configuration is specified, framework will use the default configuration.
         .. literalinclude:: _static/default_config.yaml
             :language: yaml
 
-.. note::
-    Default configuration can be used only for local drivers of the latest versions.
+
+.. note:: Default configuration can be used only for local drivers of the latest versions.
 
 If the default config isn't sufficient there are two ways of setting custom configuration.
 
