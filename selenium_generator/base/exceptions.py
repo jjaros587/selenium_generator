@@ -7,10 +7,5 @@ class MissingConfiguration(Exception):
 
 
 class UnallowedBrowser(ValueError):
-    pass
-
-
-class UnspecifiedDataFolder(Exception):
-    def __init__(self):
-        super().__init__("Data folder was not specified in global configuration. "
-                         "Specify the folder or use inline data specification.")
+    def __init__(self, allowed_browsers):
+        super().__init__("Unallowed browser. Allowed browsers are: %s" % allowed_browsers)

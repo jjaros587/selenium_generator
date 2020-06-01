@@ -1,6 +1,5 @@
 import os
 import sys
-from selenium_generator.base.exceptions import UnspecifiedDataFolder
 from selenium_generator.base.file_manager import FileManager
 from selenium_generator.base.utils import load_yaml, singleton
 from selenium_generator.parsers.arg_parser import ArgParser
@@ -60,8 +59,6 @@ class ConfigParser:
         return self.config['drivers']
 
     def get_data_path(self, data_path):
-        if 'data' not in self.config:
-            raise UnspecifiedDataFolder()
         return os.path.join(self.get_path(self.config['data']), data_path)
 
     def get_tags(self):
