@@ -26,7 +26,7 @@ class DriverFactory:
 
     def _verify_browsers(self, browser):
         if browser not in self.allowed_browsers:
-            raise UnallowedBrowser("Unallowed browser. Allowed browsers are: %s" % self.allowed_browsers)
+            raise UnallowedBrowser(self.allowed_browsers)
 
         if browser not in self.drivers:
             raise MissingConfiguration("Missing configuration for driver [%s]" % browser)

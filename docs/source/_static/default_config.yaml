@@ -1,0 +1,21 @@
+scenarios: "scenarios"
+data: "data"
+pages: "pages"
+
+report:
+    screenshots: true
+    clean: true
+    params:
+        output: "./reports/"
+        combine_reports: true
+        report_name: "TestReport"
+        report_title: "Test results"
+
+tags: []
+
+drivers:
+  chrome:
+    remote: false
+
+  firefox:
+    remote: false

@@ -4,6 +4,15 @@ Installation
 
 This part of the documentation covers the installation of ``selenium_generator``.
 
+The framework needs several external dependencies which are installed along with the framework.
+
+.. toggle-header::
+    :header: **Show the dependencies**
+
+        .. include:: ../../requirements.txt
+            :literal:
+
+
 *********************
 Installation with PIP
 *********************
@@ -13,10 +22,11 @@ Installation with PIP
 
     $ pip install selenium_generator
 
+
 *******************
 Manual installation
 *******************
-Package is also possible to download by cloning the project repository and to install it manually.
+Package is also possible to download by cloning the project repository and to install it from source.
 
 .. code-block:: console
 
@@ -24,8 +34,10 @@ Package is also possible to download by cloning the project repository and to in
     $ cd selenium_generator
     $ python setup.py install
 
+
 If the framework is being extended you might find useful to install the package in a development mode.
 
 .. code-block:: console
 
     $ python setup.py develop
+

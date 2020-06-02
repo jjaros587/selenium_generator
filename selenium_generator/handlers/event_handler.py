@@ -2,6 +2,9 @@ from selenium_generator.handlers.keywords import Keywords
 
 
 class EventHandler:
+    """
+    EventHandler class.
+    """
 
     def __init__(self):
         self.keywords = Keywords()

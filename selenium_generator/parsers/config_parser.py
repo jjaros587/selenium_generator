@@ -1,6 +1,5 @@
 import os
 import sys
-from selenium_generator.base.exceptions import UnspecifiedDataFolder
 from selenium_generator.base.file_manager import FileManager
 from selenium_generator.base.utils import load_yaml, singleton
 from selenium_generator.parsers.arg_parser import ArgParser
@@ -60,8 +59,6 @@ class ConfigParser:
         return self.config['drivers']
 
     def get_data_path(self, data_path):
-        if 'data' not in self.config:
-            raise UnspecifiedDataFolder()
         return os.path.join(self.get_path(self.config['data']), data_path)
 
     def get_tags(self):
@@ -80,25 +77,39 @@ class ConfigUpdater:
         self.config = parser.config
 
     def update_config(self):
+        self._verify_scenarios()
+        self._verify_pages()
+        self._verify_data()
         self._verify_tags()
         self._verify_report()
 
-    def _verify_tags(self):
-        if 'tags' not in self.config:
-            self.config.update({'tags': DEFAULT_CONFIG['tags']})
+    def _verify_scenarios(self, key="scenarios"):
+        self._check_object(key)
 
-    def _verify_report(self):
-        if 'report' not in self.config:
-            self.config.update({'report': DEFAULT_CONFIG['report']})
+    def _verify_pages(self, key="pages"):
+        self._check_object(key)
+
+    def _verify_data(self, key="data"):
+        self._check_object(key)
+
+    def _verify_tags(self, key="tags"):
+        self._check_object(key)
+
+    def _verify_report(self, key="report"):
+        self._check_object(key)
         self._verify_output_folder()
 
-    def _verify_output_folder(self):
+    def _verify_output_folder(self, key="params"):
         report = self.parser.get_report_config()
-        if 'params' in report:
-            if 'output' in report['params']:
-                updated_path = self.parser.get_path(report['params']['output'])
-                report['params']['output'] = updated_path
+        if key in report:
+            if 'output' in report[key]:
+                updated_path = self.parser.get_path(report[key]['output'])
+                report[key]['output'] = updated_path
                 report.update({'output':  updated_path})
                 return
         report.update({'output': runner.DEFAULT_OUTPUT})
+
+    def _check_object(self, key):
+        if key not in self.config:
+            self.config.update({key: DEFAULT_CONFIG[key]})
 
