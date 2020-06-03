@@ -5,13 +5,13 @@ pages: "pages"
 drivers:  # It is also possible to specify Desired Capabilities for each driver if needed
   chrome:
     remote: true
-    version: "80.0.3987.106"
+    version: "80.0.3987.106"  # The driver will be run with this version
     options:
-      - "--headless"
+      - "--headless"          # The driver will be run in headless mode
 
-  firefox:  # This driver will use latest version
+  firefox:                    # This driver will use latest version
     remote: true
-    options:
+    options:                  # The driver will be run with screensize 1920x1080
       - "--width=1920"
       - "--height=1080"
 
