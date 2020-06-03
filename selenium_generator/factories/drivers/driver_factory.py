@@ -1,4 +1,4 @@
-from selenium_generator.base.exceptions import MissingConfiguration, UnallowedBrowser
+from selenium_generator.base.exceptions import MissingDriverConfiguration, UnsupportedDriver
 from selenium_generator.base.utils import singleton
 from selenium_generator.factories.drivers.local_driver import LocalDriver
 from selenium_generator.factories.drivers.remote_driver import RemoteDriver
@@ -26,7 +26,7 @@ class DriverFactory:
 
     def _verify_browsers(self, browser):
         if browser not in self.allowed_browsers:
-            raise UnallowedBrowser(self.allowed_browsers)
+            raise UnsupportedDriver(self.allowed_browsers)
 
         if browser not in self.drivers:
-            raise MissingConfiguration("Missing configuration for driver [%s]" % browser)
+            raise MissingDriverConfiguration(browser)

@@ -1,7 +1,7 @@
 import os
 import unittest
 from datetime import datetime
-
+from selenium_generator.base.exceptions import InvalidScenario
 from selenium_generator.base.file_manager import FileManager
 from selenium_generator.handlers.event_handler import EventHandler
 from selenium_generator.parsers.config_parser import ConfigParser
@@ -9,6 +9,7 @@ from selenium_generator.parsers.config_parser import ConfigParser
 
 class BaseTest(unittest.TestCase):
 
+    errors = None
     scenario = None
     handler = None
     driver = None
@@ -21,6 +22,8 @@ class BaseTest(unittest.TestCase):
             cls.handler.execute(cls, cls.scenario['before_all'])
 
     def setUp(self):
+        if self.errors is not None:
+            raise InvalidScenario(self.errors)
         self.screen_shot_path = None
         if "before_each" in self.scenario:
             self.handler.execute(self, self.scenario['before_each'])
