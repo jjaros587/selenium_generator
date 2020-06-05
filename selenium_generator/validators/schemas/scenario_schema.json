@@ -18,6 +18,11 @@
       "empty": false
     }
   },
+  "skip": {
+    "type": "string",
+    "required": false,
+    "nullable": true
+  },
   "before_all": {
     "type": "list",
     "required": false,

@@ -1,5 +1,5 @@
 import unittest
-from selenium_generator.base.base_test import factory
+from selenium_generator.factories.tests.base_test import factory
 from selenium_generator.base.exceptions import InvalidScenario
 from selenium_generator.base.utils import singleton
 from selenium_generator.parsers.config_parser import ConfigParser
@@ -9,7 +9,7 @@ from functools import wraps
 
 
 @singleton
-class TestCreator:
+class TestFactory:
 
     v = SchemaValidator()
 
@@ -26,9 +26,15 @@ class TestCreator:
             setattr(self.test_class, "errors", str(self.v.get_errors()))
             self._create_test_method()
             return self.test_class
-        else:
-            self._check_data()
-            return ddt.ddt(self.test_class)
+
+        if "skip" in self.scenario:
+            self._create_test_method(
+                unittest.skip(self.scenario['skip'])(getattr(self.test_class, self.test_method.__name__))
+            )
+            return self.test_class
+
+        self._check_data()
+        return ddt.ddt(self.test_class)
 
     def _check_data(self):
         if 'data' not in self.scenario or self.scenario['data'] is None:

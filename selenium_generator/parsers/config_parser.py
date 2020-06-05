@@ -20,12 +20,12 @@ DEFAULT_CONFIG = {
     'tags': [],
 
     'drivers': {
-      'chrome': {
-        'remote': False
-      },
-      'firefox': {
-        'remote': False
-      }
+        'chrome': {
+            'remote': False
+        },
+        'firefox': {
+            'remote': False
+        }
     }
 }
 

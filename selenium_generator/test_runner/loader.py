@@ -1,7 +1,7 @@
 from unittest import TestLoader, TestSuite
 from selenium_generator.base.file_manager import FileManager
 from selenium_generator.base.utils import load_yaml
-from selenium_generator.factories.test_creator import TestCreator
+from selenium_generator.factories.tests.test_factory import TestFactory
 from selenium_generator.parsers.config_parser import ConfigParser
 
 
@@ -11,7 +11,7 @@ class Loader:
         self.tests = []
         self.scenarios = FileManager.get_list_of_files(ConfigParser().get_scenarios_path())
         self.tags = ConfigParser().get_tags()
-        self.test_creator = TestCreator()
+        self.test_creator = TestFactory()
 
     def load_scenarios(self):
         for item in self.scenarios:
