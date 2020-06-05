@@ -1,6 +1,6 @@
 import os
 from cerberus import Validator
-from selenium_generator.base.exceptions import InvalidConfiguration
+from selenium_generator.base.exceptions import InvalidConfiguration, InvalidScenario
 from selenium_generator.base.utils import singleton, load_json
 
 DEFAULT_CONFIG_SCHEMA = os.path.join(os.path.dirname(__file__), "schemas", "config_schema.json")
@@ -42,7 +42,8 @@ class SchemaValidator:
             raise InvalidConfiguration(self.v.errors)
 
     def validate_scenario(self, document):
-        return self.validate(document,  self.scenario_schema)
+        if not self.validate(document,  self.scenario_schema):
+            raise InvalidScenario(self.get_errors())
 
     def get_errors(self):
         return self.v.errors

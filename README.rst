@@ -26,6 +26,36 @@ Features
 - Taking screenshots on failure
 - Including screenshots in test report
 
+******************
+Easy configuration
+******************
+Configure everything what is needed for test execution from one place.
+
+.. code-block:: yaml
+
+    scenarios: "scenarios"
+    data: "data"
+    pages: "pages"
+
+    report:
+      screenshots: true
+      clean: true
+      params:
+        output: "reports"
+        combine_reports: true
+        report_name: "TestReport"
+        report_title: "My Report"
+
+    tags: ["acceptance", "regression"]
+
+    drivers:
+      chrome:
+        remote: false
+
+      firefox:
+        remote: false
+
+
 ****************
 Copyright Notice
 ****************

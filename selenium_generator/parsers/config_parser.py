@@ -6,6 +6,7 @@ from selenium_generator.parsers.arg_parser import ArgParser
 from selenium_generator.test_runner import runner
 from selenium_generator.validators.validator import SchemaValidator
 
+
 DEFAULT_CONFIG = {
     'scenarios': "scenarios",
     'data': "data",
@@ -20,14 +21,15 @@ DEFAULT_CONFIG = {
 
     'drivers': {
       'chrome': {
-        'remote': False,
-        'version': "80.0.3987.106"
+        'remote': False
       },
       'firefox': {
         'remote': False
       }
     }
 }
+
+
 @singleton
 class ConfigParser:
 

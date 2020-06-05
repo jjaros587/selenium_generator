@@ -1,10 +1,11 @@
 import unittest
-
 from selenium_generator.base.base_test import factory
+from selenium_generator.base.exceptions import InvalidScenario
 from selenium_generator.base.utils import singleton
 from selenium_generator.parsers.config_parser import ConfigParser
 import ddt
 from selenium_generator.validators.validator import SchemaValidator
+from functools import wraps
 
 
 @singleton
@@ -19,17 +20,19 @@ class TestCreator:
         return self
 
     def create(self):
-        if not self.v.validate_scenario(self.scenario):
-            self._create_test_method(
-                (unittest.skip("Invalid scenario structure: " + str(self.v.get_errors())))(self.test_method)
-            )
+        try:
+            self.v.validate_scenario(self.scenario)
+        except InvalidScenario as e:
+            setattr(self.test_class, "errors", str(self.v.get_errors()))
+            self._create_test_method()
             return self.test_class
-
-        self._check_data()
-        return ddt.ddt(self.test_class)
+        else:
+            self._check_data()
+            return ddt.ddt(self.test_class)
 
     def _check_data(self):
         if 'data' not in self.scenario or self.scenario['data'] is None:
+            self._create_test_method()
             return
 
         if isinstance(self.scenario['data'], str):
@@ -47,3 +50,18 @@ class TestCreator:
 
     def _generate_test_name(self):
         return "test_" + self.scenario['name']
+
+
+def fail_test(reason):
+    """
+    Unconditionally skip a test.
+    """
+    def decorator(test_item):
+        if not isinstance(test_item, type):
+            @wraps(test_item)
+            def fail_wrapper(*args, **kwargs):
+                raise unittest.TestCase.failureException(reason)
+            test_item = fail_wrapper
+
+        return test_item
+    return decorator

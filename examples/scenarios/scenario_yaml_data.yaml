@@ -1,6 +1,6 @@
 name: "search_positive_yaml_data"
 data: "data.yaml"
-tags: []
+tags: ["*"]
 before_all:
 before_each:
   - run_driver: "chrome"

@@ -1,6 +1,6 @@
 name: "search_positive_json_data"
 data: "data.json"
-tags: []
+tags: ["*"]
 before_all:
 before_each:
   - run_driver: "chrome"
