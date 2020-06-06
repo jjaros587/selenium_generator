@@ -4,6 +4,34 @@ API Documentation
 
 
 ********************
+base_driver module
+********************
+
+.. automodule:: selenium_generator.factories.drivers.base_driver
+
+    .. autoclass:: BaseDriver
+      :members:
+
+.. automodule:: selenium_generator.factories.drivers.driver_factory
+
+    .. autoclass:: DriverFactory
+      :members:
+      :private-members:
+
+.. automodule:: selenium_generator.factories.drivers.remote_driver
+
+    .. autoclass:: RemoteDriver
+      :members:
+      :private-members:
+
+.. automodule:: selenium_generator.factories.drivers.local_driver
+
+    .. autoclass:: LocalDriver
+      :members:
+      :private-members:
+
+
+********************
 event_handler module
 ********************
 

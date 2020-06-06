@@ -4,30 +4,58 @@ from selenium_generator.factories.drivers.local_driver import LocalDriver
 from selenium_generator.factories.drivers.remote_driver import RemoteDriver
 from selenium_generator.parsers.config_parser import ConfigParser
 
-DEFAULT_LOCAL_BROWSERS = ["chrome", "firefox", "ie"]
-DEFAULT_DRIVER_TYPES = [LocalDriver, RemoteDriver]
+DEFAULT_LOCAL_DRIVERS = ["chrome", "firefox"]
+DEFAULT_DRIVER_CLASSES = [LocalDriver, RemoteDriver]
 
 
 @singleton
 class DriverFactory:
+    """Factory class for drivers.
 
+    Args:
+       driver_classes (list(BaseDriver)): List of classes for running individual types of drivers.
+       allowed_local_drivers (str): List of names of allowed local drivers.
+
+    Attributes:
+       driver_classes (list(BaseDriver)): List of classes for running individual types of drivers.
+       allowed_local_drivers (str): List of names of allowed local drivers.
+       drivers (dict): Loaded drivers object from configuration.
+    """
     def __init__(self,
-                 driver_types=DEFAULT_DRIVER_TYPES,
-                 allowed_local_browsers=DEFAULT_LOCAL_BROWSERS):
+                 driver_classes=DEFAULT_DRIVER_CLASSES,
+                 allowed_local_drivers=DEFAULT_LOCAL_DRIVERS):
 
-        self.driver_types = driver_types
+        self.driver_classes = driver_classes
         self.drivers = ConfigParser().get_drivers_config()
-        self.allowed_browsers = allowed_local_browsers
+        self.allowed_local_drivers = allowed_local_drivers
 
-    def run(self, browser):
-        self._verify_browser(browser)
-        for driver in self.driver_types:
-            if driver.check_type(self.drivers[browser]['remote']):
-                return driver(browser, self.drivers[browser]).run()
+    def run(self, driver_name):
+        """Method create instance of required webdriver based on driver_name and its configuration.
 
-    def _verify_browser(self, browser):
-        if browser not in self.allowed_browsers:
-            raise UnsupportedDriver(self.allowed_browsers)
+        Args:
+            driver_name (str): Name of a driver.
 
-        if browser not in self.drivers:
-            raise MissingDriverConfiguration(browser)
+        Returns:
+            Webdriver: Instance of a required webdriver.
+        """
+        self._verify_drivers(driver_name)
+        for driver in self.driver_classes:
+            if driver.check_type(self.drivers[driver_name]['remote']):
+                return driver(driver_name, self.drivers[driver_name]).run()
+
+    def _verify_drivers(self, driver_name):
+        """Method verify if local driver is allowed in allowed_local_drivers and if any type of driver is configured in
+            configuration.
+
+        Args:
+            driver_name (str): Name of a driver.
+
+        Raises:
+            UnsupportedDriver: If driver_name is not in allowed_local_drivers.
+            MissingDriverConfiguration: If configuration of a driver is missing in configuration.
+        """
+        if driver_name not in self.allowed_local_drivers:
+            raise UnsupportedDriver(self.allowed_local_drivers)
+
+        if driver_name not in self.drivers:
+            raise MissingDriverConfiguration(driver_name)

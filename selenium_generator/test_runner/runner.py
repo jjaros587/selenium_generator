@@ -16,11 +16,13 @@ DEFAULT_OUTPUT = "./reports/"
 class TestInfo(_TestInfo):
     """ TestInfo class.
 
-    :param test_result: :func:`~Result`
-    :param test_method:
-    :param outcome:
-    :param err:
-    :param sub_test:
+    Args:
+        test_result (Result):
+        test_method:
+        outcome:
+        err:
+        sub_test:
+        screen_shot:
     """
     def __init__(self, test_result, test_method, outcome=_TestInfo.SUCCESS, err=None, sub_test=None, screen_shot=None):
         _TestInfo.__init__(self, test_result, test_method, outcome=outcome, err=err, subTest=sub_test)
@@ -30,11 +32,10 @@ class TestInfo(_TestInfo):
 class Result(HtmlTestResult):
     """ Result class.
 
-    :param stream: :func:`~Result`
-    :param descriptions:
-    :param verbosity:
-
-    .. automethod:: _create_test_info
+    Args:
+        stream:
+        descriptions:
+        verbosity:
     """
     def __init__(self, stream, descriptions, verbosity):
         HtmlTestResult.__init__(self, stream, descriptions, verbosity)
@@ -63,12 +64,13 @@ class Result(HtmlTestResult):
 class Runner(HTMLTestRunner):
     """ Runner class.
 
-    :param string utput:
-    :param string report_title:
-    :param string report_name:
-    :param template:
-    :param resultclass:
-    :param boolean combine_reports:
+    Args:
+        output (str):
+        report_title (str):
+        report_name (str):
+        template (str):
+        resultclass (Result):
+        boolean combine_reports (bool):
     """
     def __init__(self, output=DEFAULT_OUTPUT, report_title="Test results", report_name="TestReport",
                  template=DEFAULT_TEMPLATE, resultclass=Result, combine_reports=True):

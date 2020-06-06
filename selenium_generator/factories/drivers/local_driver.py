@@ -8,16 +8,26 @@ from selenium_generator.factories.drivers.base_driver import BaseDriver
 
 
 class LocalDriver(BaseDriver):
+    __doc__ = BaseDriver.__doc__
 
     REMOTE = False
 
-    def __init__(self, browser, params):
-        super().__init__(browser, params)
+    def __init__(self, driver_name, params):
+        super().__init__(driver_name, params)
 
     def run(self):
-        return getattr(self, "_run_" + self.browser)()
+        """Method calls individual method for running specific driver based on driver name.
+
+        Returns:
+            Instance of required driver."""
+        return getattr(self, "_run_" + self.driver_name)()
 
     def _run_chrome(self):
+        """Method runs instance of driver for Chrome.
+
+        Returns:
+            Instance of driver for Chrome.
+        """
         chrome_options = self._add_option(ChromeOptions())
         return webdriver.Chrome(
             chrome_options=chrome_options,
@@ -25,6 +35,10 @@ class LocalDriver(BaseDriver):
             executable_path=ChromeDriverManager(version=self.version).install())
 
     def _run_firefox(self):
+        """Method runs instance of driver for Firefox.
+
+        Returns:
+            Instance of driver for Firefox."""
         firefox_options = self._add_option(FirefoxOptions())
         return webdriver.Firefox(
             options=firefox_options,
@@ -32,6 +46,11 @@ class LocalDriver(BaseDriver):
             executable_path=GeckoDriverManager(version=self.version).install())
 
     def _add_option(self, options):
+        """Method adds items to instance of Options for the required driver from configuration.
+
+        Args:
+            options: Instance of Options class for required browser
+        """
         for item in self.options:
             options.add_argument(item)
         return options

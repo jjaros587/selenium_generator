@@ -5,13 +5,18 @@ DEFAULT_EXECUTOR = 'http://127.0.0.1:4444/wd/hub'
 
 
 class RemoteDriver(BaseDriver):
+    __doc__ = BaseDriver.__doc__
 
     REMOTE = False
 
-    def __init__(self, browser, params):
-        super().__init__(browser, params)
+    def __init__(self, driver_name, params):
+        super().__init__(driver_name, params)
 
     def run(self):
+        """Method runs instance of Remote WebDriver.
+
+        Returns:
+            Instance of Remote driver."""
         return webdriver.Remote(
             command_executor=self.url,
             desired_capabilities=self.desired_caps,
