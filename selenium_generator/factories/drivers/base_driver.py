@@ -1,9 +1,5 @@
-from selenium_generator.base.exceptions import MissingDriverConfiguration, UnsupportedDriver
-from selenium_generator.base.utils import singleton
-from selenium_generator.parsers.config_parser import ConfigParser
-
-DEFAULT_BROWSERS = ["chrome", "firefox"]
 DEFAULT_EXECUTOR = 'http://127.0.0.1:4444/wd/hub'
+"""URL of a default executor for running tests on remote machine"""
 
 
 class BaseDriver:
@@ -21,6 +17,7 @@ class BaseDriver:
         desired_caps (dict): Desired capabilities from configuration.
     """
     REMOTE = None
+    """bool: Class attribute for determination of a type of a driver [True - remote, False - local]"""
 
     def __init__(self, driver_name, params):
         self.driver_name = driver_name

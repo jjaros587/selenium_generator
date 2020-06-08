@@ -1,11 +1,20 @@
 from selenium_generator.base.exceptions import MissingDriverConfiguration, UnsupportedDriver
-from selenium_generator.base.utils import singleton
+from selenium_generator.base.singleton import singleton
 from selenium_generator.factories.drivers.local_driver import LocalDriver
 from selenium_generator.factories.drivers.remote_driver import RemoteDriver
 from selenium_generator.parsers.config_parser import ConfigParser
 
 DEFAULT_LOCAL_DRIVERS = ["chrome", "firefox"]
+"""List of names of allowed local drivers. In other words driver which are by default supported with 
+:class:`selenium_generator.factories.drivers.local_driver.LocalDriver`"""
+
 DEFAULT_DRIVER_CLASSES = [LocalDriver, RemoteDriver]
+"""List of class which :class:`DriverFactory` uses for creating of required driver.
+
+List of default classes:
+    :class:`selenium_generator.factories.drivers.local_driver.LocalDriver`
+    :class:`selenium_generator.factories.drivers.remote_driver.RemoteDriver`
+"""
 
 
 @singleton

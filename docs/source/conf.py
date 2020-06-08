@@ -66,3 +66,13 @@ html_sidebars = {
         'donate.html',
     ]
 }
+
+autodoc_default_options = {
+    'special-members': '__init__',
+    'inherited-members': False,
+    'members': True,
+    'private-members': True,
+    'show-inheritance': True,
+
+    'exclude-members': '__weakref__'
+}

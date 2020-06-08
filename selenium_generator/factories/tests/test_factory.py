@@ -1,11 +1,10 @@
 import unittest
-from selenium_generator.factories.tests.base_test import factory
+from selenium_generator.factories.tests.base_test import BaseTest
 from selenium_generator.base.exceptions import InvalidScenario
-from selenium_generator.base.utils import singleton
+from selenium_generator.base.singleton import singleton
 from selenium_generator.parsers.config_parser import ConfigParser
 import ddt
 from selenium_generator.validators.validator import SchemaValidator
-from functools import wraps
 
 
 @singleton
@@ -15,7 +14,7 @@ class TestFactory:
 
     def __call__(self, scenario):
         self.scenario = scenario
-        self.test_class = factory(scenario['name'], scenario)
+        self.test_class = type(scenario['name'], (BaseTest,), {"scenario": scenario})
         self.test_method = self.test_class.base_method
         return self
 
@@ -70,17 +69,3 @@ class TestFactory:
     def _generate_test_name(self):
         return "test_" + self.scenario['name']
 
-
-def fail_test(reason):
-    """
-    Unconditionally skip a test.
-    """
-    def decorator(test_item):
-        if not isinstance(test_item, type):
-            @wraps(test_item)
-            def fail_wrapper(*args, **kwargs):
-                raise unittest.TestCase.failureException(reason)
-            test_item = fail_wrapper
-
-        return test_item
-    return decorator

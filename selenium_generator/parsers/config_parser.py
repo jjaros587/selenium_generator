@@ -1,7 +1,7 @@
 import os
 import sys
 from selenium_generator.base.file_manager import FileManager
-from selenium_generator.base.utils import load_yaml, singleton
+from selenium_generator.base.singleton import singleton
 from selenium_generator.parsers.arg_parser import ArgParser
 from selenium_generator.test_runner import runner
 from selenium_generator.validators.validator import SchemaValidator
@@ -36,9 +36,9 @@ class ConfigParser:
     def __init__(self, config_path='config.yaml'):
         arg_config = ArgParser.parse_args()
         if arg_config is not None:
-            self.config = load_yaml(arg_config)
+            self.config = FileManager.load_yaml(arg_config)
         elif FileManager.file_exists(config_path):
-            self.config = load_yaml(config_path)
+            self.config = FileManager.load_yaml(config_path)
         else:
             self.config = DEFAULT_CONFIG
 

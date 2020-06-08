@@ -2,6 +2,7 @@ import argparse
 
 
 class ArgParser:
+    """Class for parsing CLI arguments"""
 
     @classmethod
     def parse_args(cls):

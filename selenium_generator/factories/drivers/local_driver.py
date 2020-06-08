@@ -8,9 +8,9 @@ from selenium_generator.factories.drivers.base_driver import BaseDriver
 
 
 class LocalDriver(BaseDriver):
-    __doc__ = BaseDriver.__doc__
 
     REMOTE = False
+    """Class attribute signifies that class is for local driver"""
 
     def __init__(self, driver_name, params):
         super().__init__(driver_name, params)
