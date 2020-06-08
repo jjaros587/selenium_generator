@@ -69,10 +69,9 @@ html_sidebars = {
 
 autodoc_default_options = {
     'special-members': '__init__',
-    'inherited-members': False,
-    'members': True,
-    'private-members': True,
-    'show-inheritance': True,
-
+    'inherited-members': None,
+    'members': None,
+    'private-members': None,
+    'show-inheritance': None,
     'exclude-members': '__weakref__'
 }
