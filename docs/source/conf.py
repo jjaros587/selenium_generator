@@ -32,7 +32,8 @@ master_doc = 'index'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinxcontrib.contentui'
+    'sphinxcontrib.contentui',
+    'sphinx.ext.napoleon'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -64,4 +65,14 @@ html_sidebars = {
         'searchbox.html',
         'donate.html',
     ]
+}
+
+autodoc_default_options = {
+    'special-members': '__init__',
+    'inherited-members': False,
+    'members': True,
+    'private-members': True,
+    'show-inheritance': True,
+
+    'exclude-members': '__weakref__'
 }

@@ -1,6 +1,3 @@
-__all__ = ['visible', 'cacheable', 'callable_find_by', 'property_find_by']
-
-
 def cacheable_decorator(lookup):
     def func(self):
         if not hasattr(self, '_elements_cache'):
@@ -15,23 +12,21 @@ def cacheable_decorator(lookup):
     return func
 
 
-cacheable = cacheable_decorator
-
 _strategy_kwargs = ['id_', 'xpath', 'link_text', 'partial_link_text',
                     'name', 'tag_name', 'class_name', 'css_selector']
 
 
-def _callable_find_by(how, using, multiple, cacheable, context, driver_attr, **kwargs):
+def _find_by(how, using, multiple, cacheable, context, driver_attr, **kwargs):
     def func(self):
         # context - driver or a certain element
         if context:
-            ctx = context() if callable(context) else context.__get__(self)  # or property
+            driver = context() if callable(context) else context.__get__(self)  # or property
         else:
-            ctx = getattr(self, driver_attr)
+            driver = getattr(self, driver_attr)
 
         # 'how' AND 'using' take precedence over keyword arguments
         if how and using:
-            lookup = ctx.find_elements if multiple else ctx.find_element
+            lookup = driver.find_elements if multiple else driver.find_element
             return lookup(how, using)
 
         [[key, value]] = kwargs.items()
@@ -42,25 +37,11 @@ def _callable_find_by(how, using, multiple, cacheable, context, driver_attr, **k
 
         suffix = key[:-1] if key.endswith('_') else key  # find_element(s)_by_xxx
         prefix = 'find_elements_by' if multiple else 'find_element_by'
-        lookup = getattr(ctx, '%s_%s' % (prefix, suffix))
+        lookup = getattr(driver, '%s_%s' % (prefix, suffix))
         return lookup(value)
 
     return cacheable_decorator(func) if cacheable else func
 
 
-def callable_find_by(how=None, using=None, multiple=False, cacheable=False, context=None, driver_attr='_driver',
-                     **kwargs):
-    return _callable_find_by(how, using, multiple, cacheable, context, driver_attr, **kwargs)
-
-
-def property_find_by(how=None, using=None, multiple=False, cacheable=False, context=None, driver_attr='_driver',
-                     **kwargs):
-    return property(_callable_find_by(how, using, multiple, cacheable, context, driver_attr, **kwargs))
-
-
-def visible(element):
-    def expected_condition(ignored):
-        candidate = element() if callable(element) else element
-        return candidate if (candidate and candidate.is_displayed()) else None
-
-    return expected_condition
+def find_by(how=None, using=None, multiple=False, cacheable=False, context=None, driver_attr='_driver', **kwargs):
+    return _find_by(how, using, multiple, cacheable, context, driver_attr, **kwargs)

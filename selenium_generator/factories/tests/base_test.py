@@ -8,7 +8,8 @@ from selenium_generator.parsers.config_parser import ConfigParser
 
 
 class BaseTest(unittest.TestCase):
-
+    """Base class for generating of tests.
+    """
     errors = None
     scenario = None
     handler = None
@@ -17,11 +18,16 @@ class BaseTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        """Base class for generating of tests.
+        """
         cls.handler = EventHandler()
         if "before_all" in cls.scenario:
             cls.handler.execute(cls, cls.scenario['before_all'])
 
     def setUp(self):
+        """Base class for generating of tests.
+
+        """
         if self.errors is not None:
             raise InvalidScenario(self.errors)
         self.screen_shot_path = None
@@ -29,10 +35,18 @@ class BaseTest(unittest.TestCase):
             self.handler.execute(self, self.scenario['before_each'])
 
     def base_method(self, **data):
+        """Base class for generating of tests.
+
+
+        """
         if "steps" in self.scenario:
             self.handler.execute(self, self.scenario['steps'], data)
 
     def tearDown(self):
+        """Base class for generating of tests.
+
+
+        """
         if ConfigParser().get_report_config()['screenshots']:
             self._screen_shot_on_error()
         if "after_each" in self.scenario:
@@ -40,11 +54,15 @@ class BaseTest(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        """Base class for generating of tests.
+
+
+        """
         if "after_all" in cls.scenario:
             cls.handler.execute(cls, cls.scenario['after_all'])
 
     def _screen_shot_on_error(self):
-        """Take a Screen-shot of the drive homepage, when it Failed."""
+        """Take and save a screen shot of the driver page on fail."""
         for method, error in self._outcome.errors:
             if error:
                 filename = datetime.now().strftime("%Y%m%d_%H%M%S") + "_" + self.id() + ".png"
@@ -52,7 +70,3 @@ class BaseTest(unittest.TestCase):
                 FileManager.mkdir(os.path.dirname(path))
                 self.driver.get_screenshot_as_file(path)
                 self.screen_shot_path = "screenshots\\" + filename
-
-
-def factory(class_name, scenario):
-    return type(class_name, (BaseTest,), {"scenario": scenario})
