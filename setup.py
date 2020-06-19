@@ -8,7 +8,7 @@ with open("requirements.txt", 'r') as f:
 
 setuptools.setup(
     name='selenium-generator',
-    version='0.2',
+    version='0.3',
     description='A framework for automated generating of Selenim WebDriver tests from yaml based on unittest framework.',
     url="https://github.com/jjaros587/selenium_generator",
     license="MIT",
