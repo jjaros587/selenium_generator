@@ -19,7 +19,7 @@ List of default classes:
 
 @singleton
 class DriverFactory:
-    """Factory class for drivers.
+    """Class creates instance of Selenium WebDriver for specified driver.
 
     Args:
        driver_classes (list(BaseDriver)): List of classes for running individual types of drivers.
