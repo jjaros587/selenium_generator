@@ -18,7 +18,7 @@ setuptools.setup(
     packages=setuptools.find_packages(include=['selenium_generator', 'selenium_generator.*']),
     package_data={'selenium_generator': ['../test_runner/template/*.html', '../validators/schemas/*.json']},
     install_requires=install_requires,
-    python_requires='>=3.5',
+    python_requires='>=3.6',
     platforms='any',
     tests_require=["unittest"],
     test_suite="tests",
