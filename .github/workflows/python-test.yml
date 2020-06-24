@@ -4,8 +4,8 @@
 name: Test Python package
 
 on:
-  push:
-  pull_request:
+  push: ['!master' ]
+  pull_request: 
 
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8]
+        python-version: [3.6, 3.7, 3.8]
 
     steps:
     - uses: actions/checkout@v2
@@ -34,4 +34,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with unittest
       run: |
-        python -m unittest
+        python -m unittest discover -s tests
