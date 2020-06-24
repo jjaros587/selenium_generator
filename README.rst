@@ -13,6 +13,15 @@ Framework is designed to be easily extensible.
 `Link to oficial documentation
 <https://selenium-generator.readthedocs.io/en/latest/index.html>`_.
 
+***********
+Instalation
+***********
+You can easily install the latest version with
+
+.. code-block:: console
+
+    pip install selenium-generator
+
 ********
 Features
 ********
