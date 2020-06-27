@@ -1,3 +1,5 @@
+import os
+
 from selenium_generator.factories.drivers.driver_factory import DriverFactory
 from selenium_generator.parsers.config_parser import ConfigParser
 import importlib
@@ -22,13 +24,10 @@ class Keywords:
         self.test = test
         self.data = data
 
-    def _run_driver(self, command):
+    def _run_driver(self, *args, **kwargs):
         """Method initializes instance of required driver.
-
-        Args:
-            command (str): Name of a driver to be used
         """
-        self.test.driver = DriverFactory().run(command)
+        self.test.driver = DriverFactory().run(self.test.driver_name)
 
     def _maximize(self, *args, **kwargs):
         """Method maximizes window of a driver"""

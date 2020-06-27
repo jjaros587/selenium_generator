@@ -15,6 +15,7 @@ class BaseTest(unittest.TestCase):
     handler = None
     driver = None
     screen_shot_path = None
+    driver_name = None
 
     @classmethod
     def setUpClass(cls):

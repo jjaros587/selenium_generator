@@ -80,6 +80,7 @@ class Runner(HTMLTestRunner):
     """Class for running test scenarios.
 
     Args:
+        driver_name (str): Name of a driver
         output (str): Path to folder for storing test report
         report_title (str): Title of a generated test report
         report_name (str): Name of a html file with test report
@@ -88,13 +89,10 @@ class Runner(HTMLTestRunner):
         boolean combine_reports (bool): Defines of test report of individual test classes should be combined
     """
 
-    def __init__(self, output=DEFAULT_OUTPUT, report_title="Test results", report_name="TestReport",
+    def __init__(self, driver_name="", output=DEFAULT_OUTPUT, report_title="Test results", report_name="TestReport",
                  template=DEFAULT_TEMPLATE, resultclass=Result, combine_reports=True):
 
-        report_config = config_parser.ConfigParser().get_report_config()
-
-        if report_config['clean']:
-            FileManager.remove_tree(report_config['output'])
+        report_name = report_name + "_" + driver_name + "_"
 
         HTMLTestRunner.__init__(self, output=output, report_title=report_title, report_name=report_name,
                                 template=template, resultclass=resultclass, combine_reports=combine_reports)

@@ -11,15 +11,19 @@ from selenium_generator.validators.validator import SchemaValidator
 class TestFactory:
 
     v = SchemaValidator()
+    drivers = ConfigParser().get_drivers_config().keys()
 
-    def __call__(self, scenario):
+    def __call__(self, scenario, driver_name):
         self.scenario = scenario
-        self.test_class = type(scenario['name'], (BaseTest,), {"scenario": scenario})
+        self.test_class = type(scenario['name'], (BaseTest,), {"scenario": scenario, "driver_name": driver_name})
         self.test_method = self.test_class.base_method
         return self
 
     def create(self):
         if not self._validate_scenario():
+            return self.test_class
+
+        if not self._validate_drivers():
             return self.test_class
 
         if self._check_skip():
@@ -53,6 +57,15 @@ class TestFactory:
             return False
         else:
             return True
+
+    def _validate_drivers(self):
+        if 'drivers' in self.scenario:
+            if self.scenario['drivers'].__len__() > 0:
+                if any(i not in self.drivers for i in self.scenario['drivers']):
+                    setattr(self.test_class, "errors", str(self.v.get_errors()))
+                    self._create_test_method()
+                    return False
+        return True
 
     def _check_skip(self):
         if "skip" in self.scenario:

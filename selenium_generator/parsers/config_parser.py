@@ -44,6 +44,7 @@ class ConfigParser:
 
         SchemaValidator().validate_config(self.config)
         ConfigUpdater(self).update_config()
+        self.allowed_drivers = None
 
     def get_pages_path(self):
         return self.get_path(self.config['pages'])
@@ -59,6 +60,17 @@ class ConfigParser:
 
     def get_drivers_config(self):
         return self.config['drivers']
+
+    def get_allowed_drivers(self):
+        if self.allowed_drivers is not None:
+            return self.allowed_drivers
+        drivers = []
+        for driver, properties in self.config['drivers'].items():
+            if 'allowed' in properties:
+                if not properties['allowed']:
+                    continue
+            drivers.append(driver)
+        return drivers
 
     def get_data_path(self, data_path):
         return os.path.join(self.get_path(self.config['data']), data_path)

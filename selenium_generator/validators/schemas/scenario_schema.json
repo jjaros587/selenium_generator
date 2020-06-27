@@ -18,6 +18,15 @@
       "empty": false
     }
   },
+  "drivers": {
+    "type": "list",
+    "required": false,
+    "schema": {
+      "type": "string",
+      "required": false,
+      "empty": false
+    }
+  },
   "skip": {
     "type": "string",
     "required": false,
