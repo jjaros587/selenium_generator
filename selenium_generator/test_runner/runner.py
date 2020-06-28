@@ -18,10 +18,10 @@ class TestInfo(_TestInfo):
 
     Args:
         test_result (Result): Test result class
-        test_method:
-        outcome:
-        err:
-        sub_test:
+        test_method: aaa
+        outcome: aaa
+        err: aaa
+        sub_test: aaa
         screen_shot: Path to screen shot of a failed test
     """
     def __init__(self, test_result, test_method, outcome=_TestInfo.SUCCESS, err=None, sub_test=None, screen_shot=None):

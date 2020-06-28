@@ -56,7 +56,11 @@ base_test module
 *******************
 test_factory module
 *******************
+
 .. automodule:: selenium_generator.factories.tests.test_factory
+
+    .. autoclass:: TestFactory
+
 
 
 *******************

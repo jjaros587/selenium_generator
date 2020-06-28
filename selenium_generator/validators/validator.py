@@ -10,7 +10,7 @@ DEFAULT_SCENARIO_SCHEMA = os.path.join(os.path.dirname(__file__), "schemas", "sc
 
 
 class ExtendedValidator(Validator):
-    """ Class extends Validator class from Cerberus framework :class:`cerberus.Validator`"""
+    """Class extends Validator class from Cerberus framework :class:`cerberus.Validator`"""
 
     def validate_presence_if_value(self, document, field, value, required_field):
         """Method checks presence of key based on another field and its value.
@@ -19,7 +19,7 @@ class ExtendedValidator(Validator):
             document (dict): Dictionary to check
             field: Dependent field for required field
             value: Value of a dependent field
-            required_field (): Field which should be present
+            required_field (str): Field which should be present
         Returns:
             bool: True - valid (required field is in document), False - invalid (required field is not in document)
         """
@@ -31,7 +31,8 @@ class ExtendedValidator(Validator):
 
 @singleton
 class SchemaValidator:
-    """
+    """Class validates Python dictionaries based on schema in json format.
+    It is used for validation of the configuration and test scenarios strusture.
 
     Args:
         config_schema:

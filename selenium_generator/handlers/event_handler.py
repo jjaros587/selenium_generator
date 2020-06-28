@@ -6,6 +6,7 @@ class EventHandler:
 
     Attributes:
         keywords (Keywords): Instance of a Keyword class
+        commands (list): List of commands to be executed
     """
 
     def __init__(self):

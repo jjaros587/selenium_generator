@@ -9,7 +9,16 @@ from selenium_generator.validators.validator import SchemaValidator
 
 @singleton
 class TestFactory:
+    """Class for execution of steps in scenario.
 
+    Args:
+        keywords (Keywords): Instance of a Keyword class
+        commands (list): List of commands to be executed
+
+    Attributes:
+        keywords (Keywords): Instance of a Keyword class
+        commands (list): List of commands to be executed
+    """
     v = SchemaValidator()
     drivers = ConfigParser().get_drivers_config().keys()
 

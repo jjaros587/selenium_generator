@@ -7,7 +7,7 @@ Keywords
 Create an instance of a required driver.
 Its parameter is a name of a required driver which has to correspond with one of the keys in configuration of drivers.
 If a key is not found in configuration ``MissingConfiguration`` is thrown.
-For more information about configuration of drivers visit this `*page* <configuration.html#drivers-configuration>`_.
+For more information about configuration of drivers visit this `*link* <configuration.html#drivers-configuration>`_.
 
 .. code-block:: yaml
 
@@ -63,6 +63,6 @@ It instantiates the Page Object and calls its requested method, including parsin
 - ``params (string)``
     - defines parameters and its values of a requested method
     - parameters represent ``**kwargs`` parameters of a method
-    - this object is not required - for more information about parsing parsing method parameters visit this `*page* <scenario.html#test-data>`_
+    - this object is not required - for more information about parsing method parameters visit this `*page* <scenario.html#test-data>`_
 
 
