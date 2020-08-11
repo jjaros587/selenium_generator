@@ -20,13 +20,15 @@ Features
 ****************
 
 - Automated generation of Tests based on Scenarios in yaml format
+- Configuration of everything needed in one file
+- Validation of a configuration and test scenarios against schema
 - Data Driven Testing (DDT)
 - Page Factory design pattern
-- Specification of Test suites
-- WebDriver manager
-- Test report generating
+- Specification of Test suites using tags
+- WebDriver manager - with support of either local or remote WebDrivers
+- Genarating of a configurable test report
 - Taking screenshots on failure
-- Including screenshots in test report
+- Including screenshots in a test report
 
 *****************
 Table of contents

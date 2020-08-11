@@ -1,3 +1,7 @@
+"""
+    Module contains class template for test class and default value for implementation of all custom exceptions.
+"""
+
 DEFAULT_EXECUTOR = 'http://127.0.0.1:4444/wd/hub'
 """URL of a default executor for running tests on remote machine"""
 

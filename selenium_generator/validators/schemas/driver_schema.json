@@ -18,6 +18,10 @@
     "required": false,
     "allow_unknown": true
   },
+  "allowed": {
+    "type": "boolean",
+    "required": false
+  },
   "options": {
     "type": "list",
     "required": false,
