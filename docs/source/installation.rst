@@ -2,7 +2,7 @@
 Installation
 ############
 
-This part of the documentation covers the installation of ``selenium_generator``.
+This part of the documentation covers the installation of ``selenium-generator``.
 
 The framework needs several external dependencies which are installed along with the framework.
 
@@ -16,7 +16,7 @@ The framework needs several external dependencies which are installed along with
 *********************
 Installation with PIP
 *********************
-**TODO - this option doesn't work yet**
+You can easily install package from PyPI using pip.
 
 .. code-block:: console
 

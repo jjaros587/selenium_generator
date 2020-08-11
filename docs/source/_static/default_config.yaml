@@ -7,7 +7,6 @@ report:
     clean: true
     params:
         output: "./reports/"
-        combine_reports: true
         report_name: "TestReport"
         report_title: "Test results"
 
@@ -16,6 +15,8 @@ tags: []
 drivers:
   chrome:
     remote: false
+    allowed: true
 
   firefox:
     remote: false
+    allowed: true

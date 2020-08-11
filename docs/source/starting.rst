@@ -41,6 +41,7 @@ The framework tries to load config in following order:
 #. ``config.yaml`` file from the root folder of the project
 #. Default config
 
+
 ************
 Custom start
 ************

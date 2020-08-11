@@ -1,6 +1,12 @@
 #################
 API Documentation
 #################
+This page contains description of all classes and functions which are part of the framework.
+
+*****************
+main module
+*****************
+.. automodule:: selenium_generator.main
 
 
 *****************
@@ -13,6 +19,7 @@ exceptions module
 singleton module
 ****************
 .. automodule:: selenium_generator.base.singleton
+
 
 *******************
 file_manager module
@@ -62,16 +69,18 @@ test_factory module
     .. autoclass:: TestFactory
 
 
-
 *******************
 page_factory module
 *******************
+.. automodule:: selenium_generator.factories.page_factory
 
 
 ********************
 event_handler module
 ********************
 .. automodule:: selenium_generator.handlers.event_handler
+
+    .. autoclass:: EventHandler
 
 
 ***************
@@ -91,12 +100,16 @@ config_parser module
 ********************
 .. automodule:: selenium_generator.parsers.config_parser
 
+    .. autoclass:: ConfigParser
+
+    .. autoclass:: ConfigUpdater
 
 *************
 loader module
 *************
 .. automodule:: selenium_generator.test_runner.loader
 
+    .. autoclass:: Loader
 
 ******************
 test_runner module
@@ -104,8 +117,9 @@ test_runner module
 .. automodule:: selenium_generator.test_runner.runner
 
 
-******************
+****************
 validator module
-******************
+****************
 .. automodule:: selenium_generator.validators.validator
 
+    .. autoclass:: SchemaValidator

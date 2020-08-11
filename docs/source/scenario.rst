@@ -7,16 +7,18 @@ Bellow are given its first level objects.
 
 .. code-block:: yaml
 
-    name: ""
-    tags: []
-    data: ""
-    steps: []
+    name:
+    tags:
+    data:
+    skip:
+    steps:
 
 
 *********
 Test name
 *********
 ``name`` object defines name of a test, which is used for generating of a test class and it's also used in a test report.
+It has to follow naming conventions of Python which means it must match a regular expression ``[a-zA-Z0-9_]+``.
 
 ********************
 Adding test to suite
@@ -36,6 +38,7 @@ The object is not mandatory and can contain only non-empty ``string`` values.
 
         tags: ["*"]
 
+For more information about tags visit `this page <configuration.html#test-suite-specification>`_.
 
 *****
 Steps
@@ -123,3 +126,9 @@ It's possible to use data in ``json`` or ``yaml`` format.
 
     data: "data.json"
 
+*****************
+Skipping scenario
+*****************
+We might find useful to skip a scenario. This is what object ``skip`` is used for.
+If scenario contains this object and its value is set on ``True``, scenario won't be executed and will be added
+to a test report as ``Skipped``.

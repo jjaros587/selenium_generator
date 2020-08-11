@@ -1,14 +1,11 @@
 name: "search_positive_inline_params"
 tags: ["*"]
-before_all:
-before_each:
-  - run_driver: "chrome"
+drivers: ["chrome"]
 steps:
+  - run_driver:
   - page_object:
       class: "GoogleSearchPage"
       method: "search_positive"
       params:
         search_text: "inline params"
-after_each:
   - close_driver:
-after_all:

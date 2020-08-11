@@ -1,3 +1,7 @@
+"""
+    Module contains decerator which is an implementation of singleton design pattern.
+"""
+
 from functools import wraps
 
 __instances = {}

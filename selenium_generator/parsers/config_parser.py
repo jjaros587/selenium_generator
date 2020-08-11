@@ -1,3 +1,7 @@
+"""
+    Module contains classes which are used for parsing of configuration and constant with default configuration.
+"""
+
 import os
 import sys
 from selenium_generator.base.file_manager import FileManager
@@ -28,6 +32,7 @@ DEFAULT_CONFIG = {
         }
     }
 }
+"""Constant with default configuration"""
 
 
 @singleton
@@ -36,17 +41,18 @@ class ConfigParser:
 
     Args:
         config_path (str): Path to a file with the configuration
+        file_manager (FileManager): Class for file manipulation
 
-    Params:
+    Attributes:
         config (dict): Parsed configuration
         allowed_drivers (list(str)): List of allowed drivers from the configuration
     """
-    def __init__(self, config_path='config.yaml'):
-        arg_config = ArgParser.parse_args()
+    def __init__(self, config_path='config.yaml', file_manager=FileManager):
+        arg_config = ArgParser().get_config()
         if arg_config is not None:
-            self.config = FileManager.load_yaml(arg_config)
-        elif FileManager.file_exists(config_path):
-            self.config = FileManager.load_yaml(config_path)
+            self.config = file_manager.load_yaml(arg_config)
+        elif file_manager.file_exists(config_path):
+            self.config = file_manager.load_yaml(config_path)
         else:
             self.config = DEFAULT_CONFIG
 
@@ -144,7 +150,7 @@ class ConfigUpdater:
     Args:
         parser (ConfigParser): Instance of config parser with the stored configuration.
 
-    Params:
+    Attributes:
         parser (ConfigParser): Instance of config parser with the stored configuration.
         config (dict): Loaded configuration.
     """
@@ -153,8 +159,7 @@ class ConfigUpdater:
         self.config = parser.config
 
     def update_config(self):
-        """The main method of the class which executes methods for verification of specific keys in the configuration.
-        """
+        """The main method of the class which executes methods for verification of specific keys in the configuration."""
         self._verify_scenarios()
         self._verify_pages()
         self._verify_data()
@@ -162,7 +167,7 @@ class ConfigUpdater:
         self._verify_report()
 
     def _verify_scenarios(self, key="scenarios"):
-        """Method checks configuration for scenarios.
+        """Method checks configuration for scenarios and add the default value if the related object is not specified.
 
         Args:
             key (str): Name of an object key of scenarios.
@@ -170,15 +175,15 @@ class ConfigUpdater:
         self._check_object(key)
 
     def _verify_pages(self, key="pages"):
-        """Method checks configuration for Page Objects.
+        """Method checks configuration for Page Objects add the default value if the related object is not specified.
 
         Args:
-            key (str): Name of an object key of Page Objects.
+            key (str): Name of an object key of Page Objects
         """
         self._check_object(key)
 
     def _verify_data(self, key="data"):
-        """Method checks configuration for data.
+        """Method checks configuration for data add the default value if the related object is not specified.
 
         Args:
             key (str): Name of an object key of data.
@@ -186,7 +191,7 @@ class ConfigUpdater:
         self._check_object(key)
 
     def _verify_tags(self, key="tags"):
-        """Method checks configuration for tags.
+        """Method checks configuration for tags add the default value if the related object is not specified.
 
         Args:
             key (str): Name of an object key of tags.
@@ -194,7 +199,7 @@ class ConfigUpdater:
         self._check_object(key)
 
     def _verify_report(self, key="report"):
-        """Method checks configuration for Test report.
+        """Method checks configuration for Test report add the default value if the related object is not specified.
 
         Args:
             key (str): Name of an object key of Test report.
@@ -203,7 +208,7 @@ class ConfigUpdater:
         self._verify_output_folder()
 
     def _verify_output_folder(self, key="params"):
-        """Method checks configuration for parameters of file with Test report.
+        """Method checks configuration for parameters of file with Test report add the default value if the related object is not specified.
 
         Args:
             key (str): Name of an object key of parameters for file with Test report.

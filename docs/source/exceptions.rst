@@ -1,7 +1,7 @@
 ##########
 Exceptions
 ##########
-There are three exceptions which may be thrown in a case of specific errors.
+There are four exceptions which may be thrown in a case of specific errors.
 
 ----
 
@@ -23,6 +23,7 @@ Schemas had to be divided in two schemas to allow unknown values for driver name
 
 Exception is thrown when the requirements for a structure of a scenario are not met.
 When it's thrown scenario is skipped and proper messages is added to a test report.
+Exception is connected only with specific scenario. It doesn't affect other scenarios.
 
 `Link to validation schema for scenario <https://github.com/jjaros587/selenium_generator/blob/master/selenium_generator/validators/schemas/scenario_schema.json>`_.
 

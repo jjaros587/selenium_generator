@@ -1,3 +1,7 @@
+"""
+    Module contains static class which is used for file and folder management.
+"""
+
 import os
 import shutil
 from pathlib import Path
@@ -77,3 +81,16 @@ class FileManager:
         """
         with open(file) as f:
             return json.load(f)
+
+    @staticmethod
+    def check_extension(file_path, extension):
+        """Method checks extension of a given file path.
+
+        Returns:
+            file_patch (str): Path to a file
+            extension (str): Required extension of a file
+
+        Returns:
+            bool: True - Correct extension, False - Incorrect extension
+        """
+        return Path(file_path).suffix == extension

@@ -1,3 +1,7 @@
+"""
+    Module contains implementation of all custom exceptions.
+"""
+
 class InvalidConfiguration(Exception):
     """Exception is raised when configuration doesn't match its schema.
 
