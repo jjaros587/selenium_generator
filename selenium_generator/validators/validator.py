@@ -3,7 +3,10 @@
 """
 
 import os
-from cerberus import Validator
+from collections import namedtuple
+
+from cerberus import Validator, errors
+from cerberus.errors import ErrorDefinition, ValidationError
 from selenium_generator.base.exceptions import InvalidConfiguration
 from selenium_generator.base.file_manager import FileManager
 from selenium_generator.base.singleton import singleton
@@ -34,7 +37,6 @@ class ExtendedValidator(Validator):
             bool: True - valid (required field is in document), False - invalid (required field is not in document)
         """
         if document[field] is value and required_field not in document:
-            self._error(required_field, "Required when field [%s] is [%s]" % (field, str(value)))
             return False
         return True
 
@@ -96,7 +98,7 @@ class SchemaValidator:
                 if not self.validate(item, self.local_driver_schema):
                     raise InvalidConfiguration(self.validator.errors)
                 if not self.validator.validate_presence_if_value(item, "remote", True, "desired_caps"):
-                    raise InvalidConfiguration(self.validator.errors)
+                    raise InvalidConfiguration("Field [%s] is required when field [%s] is [%s]" % ("desired_caps", "remote", True))
             return True
         else:
             raise InvalidConfiguration(self.validator.errors)
@@ -141,5 +143,9 @@ class SchemaValidator:
             extensions = [".json", ".yaml"]
             for extension in extensions:
                 if FileManager.check_extension(schema, extension):
-                    return self.file_manager.load_json(schema)
+                    extension = extension[1:]
+                    if extension == "json":
+                        return self.file_manager.load_json(schema)
+                    if extension == "yaml":
+                        return self.file_manager.load_yaml(schema)
             raise ValueError("Incorrect extension of a file with schema. It has to be %s" % extensions)
