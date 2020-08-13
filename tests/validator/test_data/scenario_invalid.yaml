@@ -1,0 +1,13 @@
+name: "invalid_scenario"
+tags: []
+before_each:
+  - run_driver: "chrome"
+steps:
+  - page_object:
+      class: "GoogleSearchPage"
+      method: "search_negative"
+      params:
+        search_text: ""
+after_each:
+  - close_driver:
+htrhgh:

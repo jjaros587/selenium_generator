@@ -1,0 +1,17 @@
+name: "search_positive_inline_data"
+data:
+  - search_text: "text1"
+  - search_text: "text2"
+tags: []
+drivers: ["chrome"]
+before_each:
+  - run_driver:
+  - maximize:
+
+steps:
+  - page_object:
+      class: "GoogleSearchPage"
+      method: "search_positive"
+
+after_each:
+  - close_driver:
