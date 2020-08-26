@@ -3,10 +3,7 @@
 """
 
 import os
-from collections import namedtuple
-
-from cerberus import Validator, errors
-from cerberus.errors import ErrorDefinition, ValidationError
+from cerberus import Validator
 from selenium_generator.base.exceptions import InvalidConfiguration
 from selenium_generator.base.file_manager import FileManager
 from selenium_generator.base.singleton import singleton
@@ -51,7 +48,8 @@ class SchemaValidator:
         file_manager (FileManager): Class used for file management.
         config_schema (dict/str): Schema for configuration in dict format/Path to schema for configuration.
         scenario_schema (dict/str): Schema for test scenario in dict format/Path to schema for test scenario.
-        driver_schema (dict/str): Schema for configuration of drivers in dict format/Path to schema for configuration of drivers.
+        driver_schema (dict/str): Schema for configuration of drivers in dict format/Path to schema
+        for configuration of drivers.
 
     Attributes:
         validator (:class:`cerberus.validator.Validator`): Instance of class used for validation.
@@ -98,10 +96,11 @@ class SchemaValidator:
                 if not self.validate(item, self.local_driver_schema):
                     raise InvalidConfiguration(self.validator.errors)
                 if not self.validator.validate_presence_if_value(item, "remote", True, "desired_caps"):
-                    raise InvalidConfiguration("Field [%s] is required when field [%s] is [%s]" % ("desired_caps", "remote", True))
+                    raise InvalidConfiguration(
+                        "Field [%s] is required when field [%s] is [%s]" % ("desired_caps", "remote", True)
+                    )
             return True
-        else:
-            raise InvalidConfiguration(self.validator.errors)
+        raise InvalidConfiguration(self.validator.errors)
 
     def validate_scenario(self, document):
         """Method for validation of test scenario.
@@ -139,13 +138,13 @@ class SchemaValidator:
         """
         if isinstance(schema, dict):
             return schema
-        else:
-            extensions = [".json", ".yaml"]
-            for extension in extensions:
-                if FileManager.check_extension(schema, extension):
-                    extension = extension[1:]
-                    if extension == "json":
-                        return self.file_manager.load_json(schema)
-                    if extension == "yaml":
-                        return self.file_manager.load_yaml(schema)
-            raise ValueError("Incorrect extension of a file with schema. It has to be %s" % extensions)
+
+        extensions = [".json", ".yaml"]
+        for extension in extensions:
+            if FileManager.check_extension(schema, extension):
+                extension = extension[1:]
+                if extension == "json":
+                    return self.file_manager.load_json(schema)
+                if extension == "yaml":
+                    return self.file_manager.load_yaml(schema)
+        raise ValueError("Incorrect extension of a file with schema. It has to be %s" % extensions)

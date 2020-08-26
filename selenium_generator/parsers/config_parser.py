@@ -232,4 +232,3 @@ class ConfigUpdater:
         """
         if key not in self.config:
             self.config.update({key: DEFAULT_CONFIG[key]})
-

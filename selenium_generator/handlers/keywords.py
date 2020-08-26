@@ -2,12 +2,12 @@
     Module contains class which stores implementation of keywords and related class for calling methods of classes.
 """
 
+import sys
 import pathlib
+import inspect
+import importlib
 from selenium_generator.factories.drivers.driver_factory import DriverFactory
 from selenium_generator.parsers.config_parser import ConfigParser
-import importlib
-import inspect
-import sys
 
 
 class Keywords:
@@ -28,19 +28,19 @@ class Keywords:
         self.test = test
         self.data = data
 
-    def _run_driver(self, *args, **kwargs):
+    def run_driver(self, *args, **kwargs):    # pylint: disable=unused-argument
         """Method initializes instance of required driver."""
         self.test.driver = DriverFactory().run(self.test.driver_name)
 
-    def _maximize(self, *args, **kwargs):
+    def maximize(self, *args, **kwargs):    # pylint: disable=unused-argument
         """Method maximizes window of a driver"""
         self.test.driver.maximize_window()
 
-    def _close_driver(self, *args, **kwargs):
+    def close_driver(self, *args, **kwargs):    # pylint: disable=unused-argument
         """Method close instance of a driver"""
         self.test.driver.close()
 
-    def _page_object(self, command):
+    def page_object(self, command):
         """Method executes required method of a given Page Object and parse data in it.
 
         Args:

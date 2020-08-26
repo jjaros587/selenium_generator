@@ -1,3 +1,7 @@
+"""
+    Module contains class for running local WebDriver.
+"""
+
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options as ChromeOptions
@@ -7,12 +11,10 @@ from selenium_generator.factories.drivers.base_driver import BaseDriver
 
 
 class LocalDriver(BaseDriver):
+    """Class used for initialization of local WebDriver"""
 
     REMOTE = False
     """Class attribute signifies that class is for local driver"""
-
-    def __init__(self, driver_name, params):
-        super().__init__(driver_name, params)
 
     def run(self):
         """Method calls individual method for running specific driver based on driver name.

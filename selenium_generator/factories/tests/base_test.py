@@ -1,6 +1,11 @@
+"""
+    Module contains base test class which serves as template for test class generating.
+"""
+
 import os
 import unittest
 from datetime import datetime
+from typing import Callable
 from selenium_generator.base.exceptions import InvalidScenario
 from selenium_generator.base.file_manager import FileManager
 from selenium_generator.handlers.event_handler import EventHandler
@@ -24,7 +29,7 @@ class BaseTest(unittest.TestCase):
     driver = None
     screen_shot_path = None
     driver_name = None
-    config_parser= None
+    config_parser: Callable = None
 
     @classmethod
     def setUpClass(cls):
@@ -65,7 +70,7 @@ class BaseTest(unittest.TestCase):
 
     def _screen_shot_on_error(self):
         """Method takes and saves a screen shot of a driver page on fail."""
-        for method, error in self._outcome.errors:
+        for method, error in self._outcome.errors:  # pylint: disable=unused-variable
             if error:
                 filename = datetime.now().strftime("%Y%m%d_%H%M%S") + "_" + self.id() + ".png"
                 path = self.config_parser().get_report_config()['output'] + "\\screenshots\\" + filename

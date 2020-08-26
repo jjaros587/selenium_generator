@@ -32,4 +32,4 @@ class EventHandler:
         self.keywords(instance, data)
         for step in steps:
             [[key, value]] = step.items()
-            getattr(self.keywords, "_" + key)(value)
+            getattr(self.keywords, key)(value)

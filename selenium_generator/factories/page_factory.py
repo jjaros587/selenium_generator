@@ -6,6 +6,7 @@ _strategy_kwargs = ['id_', 'xpath', 'link_text', 'partial_link_text',
                     'name', 'tag_name', 'class_name', 'css_selector']
 """Constan which stores allowed values by which a web element can be searched."""
 
+
 def cacheable_decorator(lookup):
     """Decorator used for cacheable elements.
 
