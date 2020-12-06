@@ -1,14 +1,16 @@
+"""
+    Module contains class for running remote WebDriver.
+"""
+
 from selenium import webdriver
 from selenium_generator.factories.drivers.base_driver import BaseDriver
 
 
 class RemoteDriver(BaseDriver):
+    """Class used for initialization of remote WebDriver"""
 
     REMOTE = False
     """Class attribute signifies that class is for remote driver"""
-
-    def __init__(self, driver_name, params):
-        super().__init__(driver_name, params)
 
     def run(self):
         """Method runs instance of Remote WebDriver.

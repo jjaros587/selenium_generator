@@ -26,7 +26,8 @@ class InvalidScenario(Exception):
 
 
 class MissingDriverConfiguration(Exception):
-    """Exception is raised when in test scenario there is specified driver which is not configured in configuration.
+    """Exception is raised when in test scenario there is specified driver
+     which is not configured in configuration.
 
     Args:
         driver (str): Name of a driver whose configuration is missing
@@ -37,7 +38,8 @@ class MissingDriverConfiguration(Exception):
 
 
 class UnsupportedDriver(ValueError):
-    """Exception is raised when in configuration there is configured local driver which is not supported.
+    """Exception is raised when in configuration there is configured
+    local driver which is not supported.
 
     Args:
         allowed_drivers (list(str)): List of allowed drivers

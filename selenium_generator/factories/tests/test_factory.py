@@ -1,9 +1,14 @@
+"""
+    Module contains factory class for test classes.
+"""
+
 import unittest
+from typing import Callable
+import ddt
 from selenium_generator.factories.tests.base_test import BaseTest
 from selenium_generator.base.singleton import singleton
 from selenium_generator.handlers.event_handler import EventHandler
 from selenium_generator.parsers.config_parser import ConfigParser
-import ddt
 from selenium_generator.validators.validator import SchemaValidator
 
 
@@ -24,16 +29,16 @@ class TestFactory:
         handler (EventHandler): List of a class for executing of test scenario steps
         drivers (dict): Configuration of drivers
     """
-    def __init__(self, config_parser=ConfigParser, validator=SchemaValidator, base_test=BaseTest, handler=EventHandler):
+    def __init__(self, config_parser: Callable = ConfigParser, validator=SchemaValidator, base_test=BaseTest, handler=EventHandler):
         self.validator = validator()
-        self.config_parser = config_parser
+        self.config_parser: Callable = config_parser
         self.drivers = self.config_parser().get_drivers_config().keys()
-        self.base_test=base_test
-        self.handler=handler
+        self.base_test = base_test
+        self.handler = handler
 
     def __call__(self, scenario, driver_name):
         self.scenario = scenario
-        self.test_class = type(scenario['name'], (self.base_test,), {
+        self.test_class: type = type(scenario['name'], (self.base_test,), {
             "scenario": scenario,
             "driver_name": driver_name,
             "handler": self.handler,
@@ -122,16 +127,16 @@ class TestFactory:
             return True
         return False
 
-    def _create_test_method(self, fn=None):
+    def _create_test_method(self, function=None):
         """Method generates test method based on a base method from base test class
 
         Args:
-            fn (type): Parameters used for specifying decorated test method
+            function (type): Parameters used for specifying decorated test method
 
         Returns:
             BaseTest: Generated test method of a test class
         """
-        setattr(self.test_class, self._generate_test_name(), self.test_method if fn is None else fn)
+        setattr(self.test_class, self._generate_test_name(), self.test_method if function is None else function)
         return self.test_method
 
     def _generate_test_name(self):
@@ -141,4 +146,3 @@ class TestFactory:
             str: Generated test method name
         """
         return "test_" + self.scenario['name']
-

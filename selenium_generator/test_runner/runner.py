@@ -2,10 +2,10 @@
     Module contains classes needed for running the tests and storing the result in the test report.
 """
 
+import os
+from unittest.result import failfast
 from HtmlTestRunner.runner import HTMLTestRunner, HtmlTestResult
 from HtmlTestRunner.result import _TestInfo
-from unittest.result import failfast
-import os
 
 DEFAULT_TEMPLATE = os.path.join(os.path.dirname(__file__), "template", "report_template.html")
 """Path to a default template for test report"""

@@ -1,7 +1,7 @@
 """
     Module contains class loads required test scenarios and generate test classes based on given parameters.
 """
-
+from typing import Callable
 from unittest import TestLoader, TestSuite
 from selenium_generator.base.singleton import singleton
 from selenium_generator.base.file_manager import FileManager
@@ -24,7 +24,7 @@ class Loader:
         scenarios (list(str)):  List of paths of all test scenarios.
         tags (list(str)): List of tags from configuration.
     """
-    def __init__(self, config_parser=ConfigParser, test_factory=TestFactory, file_manager=FileManager):
+    def __init__(self, config_parser: Callable = ConfigParser, test_factory: Callable = TestFactory, file_manager=FileManager):
         self.file_manager = file_manager
         self.scenarios = self.file_manager.get_list_of_files(config_parser().get_scenarios_path())
         self.tags = config_parser().get_tags()

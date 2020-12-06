@@ -1,5 +1,5 @@
 """
-    Module contains class template for test class and default value for implementation of all custom exceptions.
+    Module contains base class for WebDrivers and constant with default url for hub.
 """
 
 DEFAULT_EXECUTOR = 'http://127.0.0.1:4444/wd/hub'

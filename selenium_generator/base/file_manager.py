@@ -54,8 +54,8 @@ class FileManager:
             list(str): List of all loaded files
         """
         all_files = list()
-        for f in os.listdir(dir_path):
-            full_path = os.path.join(dir_path, f)
+        for file in os.listdir(dir_path):
+            full_path = os.path.join(dir_path, file)
             if os.path.isdir(full_path):
                 all_files += FileManager.get_list_of_files(full_path)
             else:
@@ -63,24 +63,24 @@ class FileManager:
         return all_files
 
     @staticmethod
-    def load_yaml(file):
+    def load_yaml(file_path):
         """Method parses yaml file into Python dict
 
         Returns:
             dict: Parsed yaml file
         """
-        with open(file) as f:
-            return yaml.load(f, Loader=yaml.FullLoader)
+        with open(file_path) as file:
+            return yaml.load(file, Loader=yaml.FullLoader)
 
     @staticmethod
-    def load_json(file):
+    def load_json(file_path):
         """Method parses json file into Python dict
 
         Returns:
             dict: Parsed json file
         """
-        with open(file) as f:
-            return json.load(f)
+        with open(file_path) as file:
+            return json.load(file)
 
     @staticmethod
     def check_extension(file_path, extension):
