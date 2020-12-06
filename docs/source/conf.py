@@ -33,7 +33,12 @@ master_doc = 'index'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinxcontrib.contentui',
-    'sphinx.ext.napoleon'
+    'sphinx.ext.napoleon',
+    'rst2pdf.pdfbuilder'
+]
+
+pdf_documents = [
+    ('index', 'doc_selenium_generator', 'selenium_gegerator', 'Bc. Jakub Jaroš'),
 ]
 
 # Add any paths that contain templates here, relative to this directory.

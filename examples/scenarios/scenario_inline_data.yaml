@@ -1,0 +1,15 @@
+name: "scenario_inline_data"
+drivers: []
+tags: ["regression"]
+data:
+  -   search_text: "aaa"
+  -   search_text: "bbb"
+before_each:
+  - run_driver:
+  - maximize:
+steps:
+  - page_object:
+      class: "GoogleSearchPage"
+      method: "search_positive"
+after_each:
+  - close_driver:

@@ -6,3 +6,4 @@ ddt
 cerberus
 sphinx
 sphinxcontrib-contentui
+rst2pdf

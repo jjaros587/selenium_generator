@@ -1,4 +1,4 @@
-name: "search_positive_inline_params"
+name: "scenario_inline_params"
 tags: ["*"]
 drivers: ["chrome"]
 steps:
