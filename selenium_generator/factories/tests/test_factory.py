@@ -39,10 +39,8 @@ class TestFactory:
     def __call__(self, scenario, driver_name):
         self.scenario = scenario
         self.test_class: type = type(scenario['name'], (self.base_test,), {
-            "scenario": scenario,
-            "driver_name": driver_name,
-            "handler": self.handler,
-            "config_parser": self.config_parser
+            "scenario": scenario, "driver_name": driver_name,
+            "handler": self.handler, "config_parser": self.config_parser
         })
         self.test_method = self.test_class.base_method
         return self

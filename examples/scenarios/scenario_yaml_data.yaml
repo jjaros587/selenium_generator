@@ -1,6 +1,6 @@
-name: "search_positive_yaml_data"
+name: "scenario_yaml_data"
 data: "data.yaml"
-tags: ["*"]
+tags: []
 drivers: ["chrome"]
 steps:
   - run_driver:

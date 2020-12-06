@@ -1,7 +1,7 @@
-name: "search_positive_json_data"
+name: "scenario_json_data"
 data: "data.json"
 tags: ["*"]
-drivers: ["chrome"]
+drivers: ["firefox"]
 steps:
   - run_driver:
   - page_object:

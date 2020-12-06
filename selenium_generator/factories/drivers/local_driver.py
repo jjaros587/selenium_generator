@@ -40,6 +40,7 @@ class LocalDriver(BaseDriver):
 
         Returns:
             Instance of driver for Firefox."""
+        self.desired_caps["marionette"] = True
         firefox_options = self._add_option(FirefoxOptions())
         return webdriver.Firefox(
             options=firefox_options,
